@@ -17,8 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogoActivity" />
-        <activity android:name=".RegistActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity android:name=".RegistActivity" />
     </application>
 
 </manifest>

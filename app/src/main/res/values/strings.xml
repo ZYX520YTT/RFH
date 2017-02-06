@@ -22,6 +22,11 @@
     <string name="string_finish">完成注册</string>
 
     <!--登录页面-->
+    <string name="string_loginphone">账户名 (手机号)</string>
+    <string name="string_loginpwd">输入密码</string>
+    <string name="string_forgetpwd">忘记密码?</string>
+    <string name="string_loginrg">立即注册>></string>
+    <string name="string_login">马上登录</string>
 
 
 </resources>

@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.StartActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-        <activity android:name=".RegistActivity" />
+        <activity android:name=".activity.RegistActivity" />
         <activity
-            android:name=".StartActivity"
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
     </application>
 

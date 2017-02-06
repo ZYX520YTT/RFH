@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_zhuce"
-    tools:context="rfh.tianli.com.rfh.RegistActivity">
+    tools:context="rfh.tianli.com.rfh.activity.RegistActivity">
 
     <RelativeLayout
         android:id="@+id/rl_title"

@@ -1,9 +1,9 @@
 package rfh.tianli.com.rfh;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+public class RegistActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

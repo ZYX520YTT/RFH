@@ -7,4 +7,25 @@ package rfh.tianli.com.rfh.thread;
  */
 
 public class Url {
+
+    public final  static String Url="https://tianli.qjun.com.cn:8443/";
+
+    //https://tianli.qjun.com.cn:8443/base/proprietor/register?mobile=12345678910&password=123456&apartmentId=12&roomNumber=13
+
+    //https://tianli.qjun.com.cn:8443/apartment/list
+    private static String getUrl(String activity){
+        String url=null;
+        url=Url+activity;
+        return url;
+    }
+
+    /**用户注册**/
+    public static String register =getUrl("base/proprietor/register");
+
+    /**获取所有公寓**/
+    public static String apartment=getUrl("apartment/list");
+
+    /**用户登录**/
+    public static  String login=getUrl("base/login");
+
 }

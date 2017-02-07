@@ -15,7 +15,7 @@
 
         >
         <ImageView
-            android:id="@+id/bt_return"
+            android:id="@+id/iv_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_return"
@@ -25,12 +25,13 @@
 
             />
         <TextView
+            android:id="@+id/tv_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
             android:text="@string/string_return"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/bt_return"
+            android:layout_toRightOf="@id/iv_return"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
             />
@@ -357,8 +358,8 @@
         android:layout_marginTop="22dp"
 
         >
-        <TextView
-            android:id="@+id/tv_agree"
+        <CheckBox
+            android:id="@+id/cb_agree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="9sp"
@@ -367,19 +368,20 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="45dp"
             android:layout_centerVertical="true"
+            style="@style/mycheckbox"
             />
 
-        <RadioButton
-            android:id="@+id/rb_agree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@drawable/btn_argee"
-            android:layout_marginRight="3dp"
-            android:layout_toLeftOf="@id/tv_agree"
-            />
+        <!--<RadioButton-->
+            <!--android:id="@+id/rb_agree"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:button="@drawable/btn_argee"-->
+            <!--android:layout_marginRight="3dp"-->
+            <!--android:layout_toLeftOf="@id/tv_agree"-->
+            <!--/>-->
     </RelativeLayout>
 
-    
+
     <Button
         android:id="@+id/bt_finish"
         android:layout_width="match_parent"

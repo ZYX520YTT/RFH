@@ -1,14 +1,14 @@
 package rfh.tianli.com.rfh.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import rfh.tianli.com.rfh.MainActivity;
 import rfh.tianli.com.rfh.R;
 
-public class StartActivity extends Activity {
+public class StartActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,12 @@ public class StartActivity extends Activity {
     private Handler handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            startActivity(new Intent(StartActivity.this,LoginActivity.class));
+            startActivity(new Intent(StartActivity.this,MainActivity.class));
+            finish();
         }
     };
 
     public void Init(){
-        handler.sendEmptyMessageDelayed(0,1000);
+        handler.sendEmptyMessageDelayed(0,1000);//启动页默认一秒
     }
 }

@@ -6,4 +6,6 @@
     
     <color name="white">#fff</color>
     <color name="whihte_hint">#8f8f8f</color>
+    <color name="gray">#aaaaaa</color>
+    <color name="light_blue">#aaaaaa</color>
 </resources>

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 /**
  * 作者：张宇翔
  * 创建日期： by 2017/2/6 on 18:49.
- * 描述：
+ * 描述：轻量级数据库保存数据
  */
 
 public class PrefUtils {

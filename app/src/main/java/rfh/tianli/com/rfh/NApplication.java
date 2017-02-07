@@ -2,6 +2,8 @@ package rfh.tianli.com.rfh;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
+import android.os.Handler;
 
 import java.util.List;
 
@@ -14,7 +16,20 @@ import java.util.List;
 public class NApplication extends Application {
 
     private static NApplication application;
+    private static int mainTid;
+    private static Handler handler;
     private List AllAcivity;
+
+
+    public static Context getApplication() {
+        return application;
+    }
+    public static int getMainTid() {
+        return mainTid;
+    }
+    public static Handler getHandler() {
+        return handler;
+    }
 
     public void addActivity(Activity activity) {
         try {

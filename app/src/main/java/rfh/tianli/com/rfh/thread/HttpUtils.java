@@ -13,7 +13,7 @@ import rfh.tianli.com.rfh.R;
 /**
  * 作者：张宇翔
  * 创建日期： by 2017/2/7 on 9:56.
- * 描述：
+ * 描述：请求
  */
 
 public class HttpUtils {

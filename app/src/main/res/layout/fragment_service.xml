@@ -2,52 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_background"
-    >
+    android:background="@color/main_background">
+
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="43.5dp"
-        android:background="@color/main_titlebackground"
-        >
+        android:background="@color/main_titlebackground">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/main_service"
             android:textColor="@color/white"
-            android:textSize="@dimen/main_title"
-            />
+            android:textSize="@dimen/main_title" />
+
         <TextView
             android:id="@+id/tv_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_service_customer"
-            android:textColor="@color/white"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textSize="10sp"
             android:layout_marginRight="16.5dp"
-            />
+            android:text="@string/main_service_customer"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
         <ImageView
             android:id="@+id/iv_customer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/tv_customer"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_phone"
             android:layout_marginRight="3dp"
-            />
+            android:layout_toLeftOf="@id/tv_customer"
+            android:src="@drawable/icon_phone" />
     </RelativeLayout>
 
     <rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/rl_title"
-        >
+        android:layout_below="@id/rl_title">
 
         <include layout="@layout/refresh_head" />
-
 
 
         <rfh.tianli.com.rfh.widget.pulltorefresh.PullableScrollView
@@ -60,6 +57,123 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <rfh.tianli.com.rfh.widget.MyImgPager
+                    android:id="@+id/myimpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_viewpager">
+
+                </rfh.tianli.com.rfh.widget.MyImgPager>
+
+                <LinearLayout
+                    android:id="@+id/llyt_function_list1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/myimpager"
+                    android:background="@color/main_background"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="12.5dp"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/iv_ownerselect"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_ownerselect"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_repairsonline"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_repairsonline"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_afforest"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_afforest"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_safetyconstruction"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_safetyconstruction"
+                        android:background="@null"
+                        />
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/llyt_function_list2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/llyt_function_list1"
+                    android:background="@color/main_background"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="18dp"
+                    >
+
+                    <ImageButton
+                        android:id="@+id/iv_communiityannouncement"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_communiityannouncement"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_pay_inquire"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_pay_inquire"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_basicseveral"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_basicseveral"
+                        android:background="@null"
+                        />
+                    <ImageButton
+                        android:id="@+id/iv_qrcodeinquire"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/select_qrcodeinquire"
+                        android:background="@null"
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/llyt_function_list2"
+                    android:descendantFocusability="blocksDescendants"
+                    >
+                    <rfh.tianli.com.rfh.widget.ShowListView
+                        android:id="@+id/ls_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="13dp"
+                        >
+
+                    </rfh.tianli.com.rfh.widget.ShowListView>
+                </RelativeLayout>
 
 
 
@@ -68,17 +182,12 @@
             </RelativeLayout>
 
 
-
-
         </rfh.tianli.com.rfh.widget.pulltorefresh.PullableScrollView>
-
 
 
         <include layout="@layout/load_more" />
 
     </rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout>
-
-
 
 
 </RelativeLayout>

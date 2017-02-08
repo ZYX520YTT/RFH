@@ -217,11 +217,11 @@ public class RegistActivity extends BaseActivity {
         params.put("mobile", et_phonenumber.getText().toString());
         params.put("password", et_setpwd.getText().toString());
         params.put("realName",et_name.getText().toString());
-        Character sx;
+        String sx;
         if(tv_sex.getText().toString().equals("男")){
-            sx=1;
+            sx="1";
         }else{
-            sx=2;
+            sx="2";
         }
         params.put("sex",sx);
         params.put("apartment",et_houses.getText().toString());

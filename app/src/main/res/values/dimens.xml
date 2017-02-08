@@ -9,4 +9,6 @@
 
     <dimen name="title_line_height">3.5dp</dimen>
     <dimen name="title_line_width">66.5dp</dimen>
+    <dimen name="subtitle_text">14sp</dimen>
+    <dimen name="item_viewpager">145.5dp</dimen>
 </resources>

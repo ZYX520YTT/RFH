@@ -20,9 +20,11 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 import rfh.tianli.com.rfh.MainActivity;
+import rfh.tianli.com.rfh.NApplication;
 import rfh.tianli.com.rfh.R;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
+import rfh.tianli.com.rfh.thread.User;
 
 public class LoginActivity extends BaseActivity {
 
@@ -109,6 +111,14 @@ public class LoginActivity extends BaseActivity {
                     JSONObject jsonObject=new JSONObject(rst);
                     String result=jsonObject.getString("result");
                     if(result.equals("success")){
+                        String userType=jsonObject.getString("userType");
+
+                        /*****保存用户权限*******/
+                        NApplication.user_power=userType;
+                        User user=new User(context);
+                        user.saveUserPower(userType);
+                        /*****保存用户权限*******/
+
                         Toast.makeText(context,"登录成功!",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();

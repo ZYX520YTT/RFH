@@ -8,4 +8,8 @@
     <color name="whihte_hint">#8f8f8f</color>
     <color name="gray">#aaaaaa</color>
     <color name="light_blue">#aaaaaa</color>
+    <color name="main_ra_light">#23a3c7</color>
+    <color name="main_ra_black">#6d6d6d</color>
+    <color name="main_background">#F4F4F4</color>
+    <color name="main_titlebackground">#409ccc</color>
 </resources>

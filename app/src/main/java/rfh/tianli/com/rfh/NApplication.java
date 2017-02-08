@@ -20,6 +20,8 @@ public class NApplication extends Application {
     private static Handler handler;
     private List AllAcivity;
 
+    public static String user_power;//用户权限
+
 
     public static Context getApplication() {
         return application;

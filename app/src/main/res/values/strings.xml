@@ -12,6 +12,8 @@
     <string name="string_inputname">(请输入真实姓名)</string>
     <string name="string_houses">楼盘名称:</string>
     <string name="string_inputhouses">(请输入楼盘名称)</string>
+    <string name="string_unit">单元名称:</string>
+    <string name="string_inputunit">(请输入单元名称)</string>
     <string name="string_housesnumber">门牌号码:</string>
     <string name="string_inputhousesnumber">(请输入门牌号码)</string>
     <string name="string_setpwd">设置密码:</string>
@@ -27,6 +29,13 @@
     <string name="string_forgetpwd">忘记密码?</string>
     <string name="string_loginrg">立即注册>></string>
     <string name="string_login">马上登录</string>
+
+    <!--主页面-->
+    <string name="main_service">物业服务</string>
+    <string name="main_pay">物业缴费</string>
+    <string name="main_interact">社区互动</string>
+    <string name="main_setting">个人设置</string>
+    <string name="main_service_customer">客服</string>
 
 
 

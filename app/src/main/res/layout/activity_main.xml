@@ -4,14 +4,57 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="rfh.tianli.com.rfh.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        >
+        <RadioButton
+            android:id="@+id/rb_service"
+            android:drawableTop="@drawable/select_main_service"
+            android:text="@string/main_service"
+            style="@style/RadioStyle"
+            />
+        <RadioButton
+            android:id="@+id/rb_pay"
+            android:drawableTop="@drawable/select_main_pay"
+            android:text="@string/main_pay"
+            style="@style/RadioStyle"
+            />
+        <RadioButton
+            android:id="@+id/rb_community"
+            android:drawableTop="@drawable/select_main_community"
+            android:text="@string/main_interact"
+            style="@style/RadioStyle"
+            />
+        <RadioButton
+            android:id="@+id/rb_setting"
+            android:drawableTop="@drawable/select_main_setting"
+            android:text="@string/main_setting"
+            style="@style/RadioStyle"
+            />
+    </RadioGroup>
+
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#B5B5B5"
+        android:layout_above="@id/radioGroup"
+        />
+
+    <rfh.tianli.com.rfh.widget.NoScrollViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_above="@id/view_line"/>
+
+
+
 </RelativeLayout>

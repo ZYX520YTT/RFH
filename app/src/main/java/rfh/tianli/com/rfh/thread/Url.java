@@ -12,7 +12,10 @@ public class Url {
 
     //https://tianli.qjun.com.cn:8443/base/proprietor/register?mobile=12345678910&password=123456&apartmentId=12&roomNumber=13
 
+    //富力桃园1单元1001
     //https://tianli.qjun.com.cn:8443/apartment/list
+    ////https://tianli.qjun.com.cn:8443/apartment/unitList?id=1
+    //https://tianli.qjun.com.cn:8443/apartment/unit/doorList?id=2
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;

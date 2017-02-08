@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    >
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="43.5dp"
+        android:background="@color/main_titlebackground"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/main_service"
+            android:textColor="@color/white"
+            android:textSize="@dimen/main_title"
+            />
+        <TextView
+            android:id="@+id/tv_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_service_customer"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textSize="10sp"
+            android:layout_marginRight="16.5dp"
+            />
+        <ImageView
+            android:id="@+id/iv_customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_customer"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_phone"
+            android:layout_marginRight="3dp"
+            />
+    </RelativeLayout>
+
+    <rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title"
+        >
+
+        <include layout="@layout/refresh_head" />
+
+
+
+        <rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView
+            android:id="@+id/ls_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null">
+
+        </rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView>
+
+
+
+        <include layout="@layout/load_more" />
+
+    </rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout>
+
+
+
+
+</RelativeLayout>

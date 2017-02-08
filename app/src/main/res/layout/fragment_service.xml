@@ -50,13 +50,27 @@
 
 
 
-        <rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView
-            android:id="@+id/ls_show"
+        <rfh.tianli.com.rfh.widget.pulltorefresh.PullableScrollView
+            android:id="@+id/scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@null">
 
-        </rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+        </rfh.tianli.com.rfh.widget.pulltorefresh.PullableScrollView>
 
 
 

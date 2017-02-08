@@ -113,10 +113,16 @@ public class LoginActivity extends BaseActivity {
                     if(result.equals("success")){
                         String userType=jsonObject.getString("userType");
 
-                        /*****保存用户权限*******/
+                        /*****保存用户权限,账号,密码*******/
                         NApplication.user_power=userType;
                         User user=new User(context);
                         user.saveUserPower(userType);
+                        String name=et_name.getText().toString();
+                        String pwd=et_pwd.getText().toString();
+
+                        user.savePhone(name);//保存用户名(手机号码)
+                        user.savePass(pwd);//保存用户密码
+
                         /*****保存用户权限*******/
 
                         Toast.makeText(context,"登录成功!",Toast.LENGTH_SHORT).show();

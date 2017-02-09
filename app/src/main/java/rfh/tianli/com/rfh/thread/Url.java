@@ -16,6 +16,8 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/apartment/list
     ////https://tianli.qjun.com.cn:8443/apartment/unitList?id=1
     //https://tianli.qjun.com.cn:8443/apartment/unit/doorList?id=2
+    //https://tianli.qjun.com.cn:8443/sys/list/role
+    //https://tianli.qjun.com.cn:8443/sys/list/org
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;
@@ -36,5 +38,13 @@ public class Url {
 
     /**业主重置帐号密码-信息验证**/
     public static String pwdreset_validate=getUrl("proprietor/pwdreset/validate");
+
+
+    /**获取组织机构树**/
+    public static String sys_org=getUrl("organization/list");
+
+    /**获取角色列表**/
+    public static String sys_role=getUrl("sys/list/role");
+
 
 }

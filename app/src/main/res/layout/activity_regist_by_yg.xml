@@ -251,7 +251,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_apart1"
-            android:layout_width="87.5dp"
+            android:layout_width="@dimen/regist_group"
             android:layout_height="27.5dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
@@ -305,7 +305,7 @@
 
         <RelativeLayout
             android:id="@+id/rl_qx1"
-            android:layout_width="87.5dp"
+            android:layout_width="@dimen/regist_group"
             android:layout_height="27.5dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"

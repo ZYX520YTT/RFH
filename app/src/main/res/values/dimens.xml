@@ -14,6 +14,8 @@
     <dimen name="forget_btn">20sp</dimen>
     <dimen name="subtitle_text">14sp</dimen>
     <dimen name="item_viewpager">145.5dp</dimen>
-
+    <dimen name="regist_group">87.5dp</dimen>
+    <dimen name="group_padding">10dp</dimen>
+    <dimen name="head_height">66dp</dimen>
 
 </resources>

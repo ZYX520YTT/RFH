@@ -61,7 +61,7 @@ public class LoginActivity extends BaseActivity {
         tv_rg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,RegistActivity.class));
+                startActivity(new Intent(LoginActivity.this,RegistSelectActivity.class));
                 overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });

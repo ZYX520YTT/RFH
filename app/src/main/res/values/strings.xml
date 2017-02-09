@@ -2,7 +2,7 @@
     <string name="app_name">融富汇</string>
 
 
-    <!--注册页面-->
+    <!--用户注册页面-->
 
     <string name="string_return">返回</string>
     <string name="string_regist">注册</string>
@@ -23,6 +23,15 @@
     <string name="string_agree">同意并接受注册协议</string>
     <string name="string_finish">完成注册</string>
 
+    <!--员工注册页面-->
+    <string name="string_regist_apart">部门:</string>
+    <string name="string_regist_qx">权限申请:</string>
+
+    <!--注册类型选择界面-->
+    <string name="string_registselect_title">注册类型选择</string>
+    <string name="string_registselect_yg">员工注册>></string>
+    <string name="string_registselect_kh">客户注册>></string>
+
     <!--登录页面-->
     <string name="string_loginphone">账户名 (手机号)</string>
     <string name="string_loginpwd">输入密码</string>
@@ -37,6 +46,7 @@
     <string name="string_forget_inputunit">请输入您的单元号</string>
     <string name="string_forget_inputhousesnumber">请输入您的门牌号</string>
     <string name="string_forget_find">找回密码</string>
+
 
     <!--重置密码界面-->
     <string name="string_pwdset_pwd1">请重置密码</string>

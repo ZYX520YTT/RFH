@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_regist_select"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_zhuce"
+    tools:context="rfh.tianli.com.rfh.activity.RegistSelectActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/btn_return"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_return"
+            android:text="@string/string_return"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/string_registselect_title"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_kh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="46.5dp"
+        android:layout_marginLeft="46.5dp"
+        android:layout_marginTop="178dp"
+        android:text="@string/string_registselect_kh"
+        android:textColor="@color/white"
+        android:textSize="@dimen/forget_btn"
+        android:background="@drawable/select_btn_kh"
+        />
+
+    <Button
+        android:id="@+id/btn_yg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="46.5dp"
+        android:layout_marginLeft="46.5dp"
+        android:layout_marginTop="21.5dp"
+        android:layout_below="@id/btn_kh"
+        android:text="@string/string_registselect_yg"
+        android:textColor="@color/white"
+        android:textSize="@dimen/forget_btn"
+        android:background="@drawable/select_btn_yg"
+        />
+
+</RelativeLayout>

@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 
-import rfh.tianli.com.rfh.MainActivity;
-import rfh.tianli.com.rfh.NApplication;
 import rfh.tianli.com.rfh.R;
 import rfh.tianli.com.rfh.thread.User;
 
@@ -28,14 +25,16 @@ public class StartActivity extends BaseActivity {
             User user=new User(context);
             String name=user.getPhone();
             String pwd=user.getPass();
-            if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)){
-                NApplication.user_power=user.getUserPower();
-                startActivity(new Intent(StartActivity.this,MainActivity.class));
-                finish();
-            }else{
-                startActivity(new Intent(StartActivity.this,LoginActivity.class));
-                finish();
-            }
+//            if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)){
+//                NApplication.user_power=user.getUserPower();
+//                startActivity(new Intent(StartActivity.this,MainActivity.class));
+//                finish();
+//            }else{
+//                startActivity(new Intent(StartActivity.this,LoginActivity.class));
+//                finish();
+//            }
+            startActivity(new Intent(StartActivity.this,LoginActivity.class));
+            finish();
         }
     };
 

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_forget_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    tools:context="rfh.tianli.com.rfh.activity.ForgetPwdActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/main_titlebackground"
+        >
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/btn_return"
+            />
+
+        <TextView
+            android:id="@+id/tv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_return"
+            android:text="@string/string_return"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/string_forget_pwd"
+            android:textColor="@color/white"
+            android:textSize="@dimen/main_title" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/rl_title"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/white"
+        android:hint="@string/string_forget_inputphonenumber"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:inputType="phone"
+        />
+
+    <EditText
+        android:id="@+id/et_houses"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/et_phone"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/white"
+        android:hint="@string/string_forget_inputhouses"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        />
+
+    <EditText
+        android:id="@+id/et_unit"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/et_houses"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/white"
+        android:hint="@string/string_forget_inputunit"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        />
+
+    <EditText
+        android:id="@+id/et_housesnumber"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/et_unit"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/white"
+        android:hint="@string/string_forget_inputhousesnumber"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        />
+    
+    
+    <Button
+        android:id="@+id/btn_find"
+        android:layout_width="300dp"
+        android:layout_height="43.5dp"
+        android:layout_below="@id/et_housesnumber"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/string_forget_find"
+        android:textColor="@color/white"
+        android:textSize="@dimen/forget_btn"
+        android:background="@drawable/select_forget_btn"
+        />
+
+    
+
+</RelativeLayout>

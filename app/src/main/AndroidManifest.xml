@@ -29,6 +29,13 @@
         <activity
             android:name=".MainActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".activity.ForgetPwdActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".activity.PwdUpdateActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
     </application>
 
 </manifest>

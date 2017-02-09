@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_pwd_update"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    tools:context="rfh.tianli.com.rfh.activity.PwdUpdateActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/main_titlebackground"
+        >
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/btn_return"
+            />
+
+        <TextView
+            android:id="@+id/tv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_return"
+            android:text="@string/string_return"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/string_forget_pwd"
+            android:textColor="@color/white"
+            android:textSize="@dimen/main_title" />
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/et_pwd1"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/rl_title"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="17dp"
+        android:background="@color/white"
+        android:hint="@string/string_pwdset_pwd1"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:inputType="textPassword"
+        />
+
+    <EditText
+        android:id="@+id/et_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_below="@id/et_pwd1"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/white"
+        android:hint="@string/string_pwdset_pwd2"
+        android:textSize="@dimen/forget_hint"
+        android:singleLine="true"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:inputType="textPassword"
+        />
+
+
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="300dp"
+        android:layout_height="43.5dp"
+        android:layout_below="@id/et_pwd2"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/string_pwdset_confirm"
+        android:textColor="@color/white"
+        android:textSize="@dimen/forget_btn"
+        android:background="@drawable/select_forget_btn"
+        />
+
+
+</RelativeLayout>

@@ -30,13 +30,25 @@
     <string name="string_loginrg">立即注册>></string>
     <string name="string_login">马上登录</string>
 
+    <!--忘记密码页面-->
+    <string name="string_forget_pwd">忘记密码</string>
+    <string name="string_forget_inputphonenumber">请输入您的手机号</string>
+    <string name="string_forget_inputhouses">请输入您的楼盘名称</string>
+    <string name="string_forget_inputunit">请输入您的单元号</string>
+    <string name="string_forget_inputhousesnumber">请输入您的门牌号</string>
+    <string name="string_forget_find">找回密码</string>
+
+    <!--重置密码界面-->
+    <string name="string_pwdset_pwd1">请重置密码</string>
+    <string name="string_pwdset_pwd2">请确认您的新密码</string>
+    <string name="string_pwdset_confirm">确认</string>
+
     <!--主页面-->
     <string name="main_service">物业服务</string>
     <string name="main_pay">物业缴费</string>
     <string name="main_interact">社区互动</string>
     <string name="main_setting">个人设置</string>
     <string name="main_service_customer">客服</string>
-
 
 
     <!--网络-->

@@ -31,4 +31,10 @@ public class Url {
     /**用户登录**/
     public static  String login=getUrl("base/login");
 
+    /**业主重置帐号密码**/
+    public static String pwdreset=getUrl("proprietor/pwdreset");
+
+    /**业主重置帐号密码-信息验证**/
+    public static String pwdreset_validate=getUrl("proprietor/pwdreset/validate");
+
 }

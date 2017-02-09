@@ -34,6 +34,8 @@ public class LoginActivity extends BaseActivity {
 
     @ViewInject(R.id.tv_rg)
     private TextView tv_rg;
+    @ViewInject(R.id.tv_forget)
+    private TextView tv_forget;
 
     @ViewInject(R.id.et_name)
     private EditText et_name;//用户名
@@ -60,6 +62,16 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,RegistActivity.class));
+                overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
+            }
+        });
+
+
+        //对“忘记密码”进行监听
+        tv_forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,ForgetPwdActivity.class));
                 overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });

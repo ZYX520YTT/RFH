@@ -12,4 +12,6 @@
     <color name="main_ra_black">#6d6d6d</color>
     <color name="main_background">#F4F4F4</color>
     <color name="main_titlebackground">#409ccc</color>
+    <color name="forget_hint">#717171</color>
+
 </resources>

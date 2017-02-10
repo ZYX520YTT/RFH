@@ -64,6 +64,7 @@ public class RegistSelectActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegistSelectActivity.this,RegistActivity.class));
+                finish();
                 overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });
@@ -73,6 +74,7 @@ public class RegistSelectActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegistSelectActivity.this,RegistByYgActivity.class));
+                finish();
                 overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });

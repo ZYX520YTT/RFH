@@ -266,7 +266,7 @@
                 android:layout_margin="3dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="人事行政部"
+
                 android:textColor="@color/white"
                 android:textSize="13.5dp" />
 
@@ -320,7 +320,7 @@
                 android:layout_margin="3dp"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="一线人员"
+
                 android:textColor="@color/white"
                 android:textSize="13.5dp" />
 

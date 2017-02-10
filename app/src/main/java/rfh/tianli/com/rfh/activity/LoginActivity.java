@@ -135,7 +135,7 @@ public class LoginActivity extends BaseActivity {
                         user.savePhone(name);//保存用户名(手机号码)
                         user.savePass(pwd);//保存用户密码
 
-                        /*****保存用户权限*******/
+                        /*****保存用户权限,账号,密码********/
 
                         Toast.makeText(context,"登录成功!",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));

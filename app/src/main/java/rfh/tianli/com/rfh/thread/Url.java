@@ -25,26 +25,29 @@ public class Url {
     }
 
     /**用户注册**/
-    public static String register =getUrl("base/proprietor/register");
+    public static String register =getUrl("prop/proprietor/register");
+
+    /**公司员工注册**/
+    public static String employee_register=getUrl("sys/employee/register");
 
     /**获取所有公寓**/
-    public static String apartment=getUrl("apartment/list");
+    public static String apartment=getUrl("prop/apartment/list");
 
     /**用户登录**/
-    public static  String login=getUrl("base/login");
+    public static  String login=getUrl("sys/base/login");
 
     /**业主重置帐号密码**/
-    public static String pwdreset=getUrl("proprietor/pwdreset");
+    public static String pwdreset=getUrl("prop/proprietor/pwdreset");
 
     /**业主重置帐号密码-信息验证**/
-    public static String pwdreset_validate=getUrl("proprietor/pwdreset/validate");
+    public static String pwdreset_validate=getUrl("prop/proprietor/pwdreset/validate");
 
 
-    /**获取组织机构树**/
-    public static String sys_org=getUrl("organization/list");
+    /**获取组织机构列表**/
+    public static String sys_org=getUrl("sys/organization/list");
 
     /**获取角色列表**/
-    public static String sys_role=getUrl("sys/list/role");
+    public static String sys_role=getUrl("sys/role/list");
 
 
 }

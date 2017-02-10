@@ -17,6 +17,7 @@
             android:layout_width="102.55dp"
             android:layout_height="75.5dp"
             android:layout_marginLeft="9dp"
+            android:scaleType="fitXY"
             android:src="@drawable/pic_1" />
 
         <TextView

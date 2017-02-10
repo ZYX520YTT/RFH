@@ -75,9 +75,9 @@ public class MyImgPager extends LinearLayout implements OnPageChangeListener {
     private LinearLayout ll_point;
     private MyPagerAdapter adapter;
     private LayoutParams params;
-    private List<Integer> imgResources = new ArrayList<Integer>();
-    private List<String> imgPaths = new ArrayList<String>();
-    private List<String> descs = new ArrayList<String>();
+    private List<Integer> imgResources = new ArrayList<>();
+    private List<String> imgPaths = new ArrayList<>();
+    private List<String> descs = new ArrayList<>();
     private int imgCount;
     private ImageView[] imgs;
     private int count;
@@ -238,9 +238,9 @@ public class MyImgPager extends LinearLayout implements OnPageChangeListener {
             for (int i = 0; i < imgCount; i++) {
                 v = new View(getContext());
                 v.setBackgroundResource(R.drawable.point_bg);
-                params = new LayoutParams(20, 20);
+                params = new LayoutParams(15, 15);
                 if (i != 0) {
-                    params.setMargins(5, 0, 0, 0);
+                    params.setMargins(12, 0, 0, 0);
                 }
                 v.setEnabled(false);
                 ll_point.addView(v, params);
@@ -289,9 +289,9 @@ public class MyImgPager extends LinearLayout implements OnPageChangeListener {
             for (int i = 0; i < imgCount; i++) {
                 v = new View(getContext());
                 v.setBackgroundResource(R.drawable.point_bg);
-                params = new LayoutParams(20, 20);
+                params = new LayoutParams(15, 15);
                 if (i != 0) {
-                    params.setMargins(5, 0, 0, 0);
+                    params.setMargins(12, 0, 0, 0);
                 }
                 v.setEnabled(false);
                 ll_point.addView(v, params);

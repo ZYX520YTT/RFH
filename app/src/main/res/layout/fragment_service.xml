@@ -72,37 +72,46 @@
                     android:background="@color/main_background"
                     android:orientation="horizontal"
                     android:layout_marginTop="12.5dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     >
 
                     <ImageButton
                         android:id="@+id/iv_ownerselect"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_ownerselect"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_repairsonline"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_repairsonline"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_afforest"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_afforest"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_safetyconstruction"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_safetyconstruction"
                         android:background="@null"
                         />
@@ -118,37 +127,46 @@
                     android:background="@color/main_background"
                     android:orientation="horizontal"
                     android:layout_marginTop="18dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     >
 
                     <ImageButton
                         android:id="@+id/iv_communiityannouncement"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_communiityannouncement"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_pay_inquire"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_pay_inquire"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_basicseveral"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_basicseveral"
                         android:background="@null"
                         />
                     <ImageButton
                         android:id="@+id/iv_qrcodeinquire"
-                        android:layout_width="0dp"
+                        android:layout_width="69dp"
                         android:layout_weight="1"
-                        android:layout_height="wrap_content"
+                        android:layout_height="69dp"
+                        android:scaleType="fitXY"
                         android:src="@drawable/select_qrcodeinquire"
                         android:background="@null"
                         />

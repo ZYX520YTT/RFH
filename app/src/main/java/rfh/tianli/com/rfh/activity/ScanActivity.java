@@ -1,5 +1,10 @@
 package rfh.tianli.com.rfh.activity;
 
+/**
+ * 作者：张宇翔
+ * 创建日期： by 2017/2/13 on 13:07.
+ * 描述：扫描的Activity
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -82,7 +87,7 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
 
     @Override
     public void onScanQRCodeSuccess(String result) {
-        Log.i(TAG, "result:" + result);
+//        Log.i(TAG, "result:" + result);
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
         vibrate();
         mQRCodeView.startSpot();

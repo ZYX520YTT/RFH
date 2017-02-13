@@ -95,11 +95,16 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
         /***************轮播测试*********************/
         List<Integer> imgResources = new ArrayList<>();
         List<String> imgDescs = new ArrayList<>();
-        imgResources.add(R.drawable.pic_1);
-        imgResources.add(R.drawable.pic_2);
+
+
         imgResources.add(R.drawable.pic_3);
+        imgResources.add(R.drawable.pic4);
+        imgResources.add(R.drawable.pic4);
 
         myimpager.setImgResourcesAndOnClickListener(imgResources,imgDescs,this,true);
+
+
+
         /***************轮播测试******************/
 
 
@@ -123,6 +128,7 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
         /*****************新闻列表测试*************************/
 
     }
+
 
     @Override
     public void onImageClick(int position, View imageView) {

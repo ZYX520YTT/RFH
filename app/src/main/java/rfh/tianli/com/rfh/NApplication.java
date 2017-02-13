@@ -3,9 +3,14 @@ package rfh.tianli.com.rfh;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Handler;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import rfh.tianli.com.rfh.utils.Tools;
 
 /**
  * 作者：张宇翔
@@ -22,6 +27,19 @@ public class NApplication extends Application {
 
     public static String user_power;//用户权限
 
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Tools.getImage(this);
+        AllAcivity=new ArrayList<Map<String,String>>();
+    }
 
     public static Context getApplication() {
         return application;

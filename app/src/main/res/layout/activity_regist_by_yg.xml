@@ -173,6 +173,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/whihte_hint"
             android:textCursorDrawable="@null"
+            android:inputType="textPassword"
             android:textSize="12sp" />
 
         <View
@@ -219,6 +220,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/whihte_hint"
             android:textCursorDrawable="@null"
+            android:inputType="textPassword"
             android:textSize="12sp" />
 
         <View

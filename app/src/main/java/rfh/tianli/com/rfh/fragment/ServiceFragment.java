@@ -1,6 +1,9 @@
 package rfh.tianli.com.rfh.fragment;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +19,11 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.EasyPermissions;
+import rfh.tianli.com.rfh.MainActivity;
 import rfh.tianli.com.rfh.R;
+import rfh.tianli.com.rfh.activity.ScanActivity;
 import rfh.tianli.com.rfh.adapter.ServiceNewsAdapter;
 import rfh.tianli.com.rfh.domain.NewsInfo;
 import rfh.tianli.com.rfh.widget.MyImgPager;
@@ -28,7 +35,9 @@ import rfh.tianli.com.rfh.widget.ShowListView;
  * 描述：物业服务页面
  */
 
-public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleViewListener {
+public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleViewListener, EasyPermissions.PermissionCallbacks {
+
+    private static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
 
     private Context context;
     private View view;
@@ -87,6 +96,16 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
     private void Init(){
 
         InitData();
+
+
+        //点击扫描二维码
+        iv_qrcodeinquire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ScanActivity.class));
+                ((Activity) MainActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
+            }
+        });
     }
 
     //初始化数据
@@ -133,5 +152,35 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
     @Override
     public void onImageClick(int position, View imageView) {
 
+    }
+
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        requestCodeQRCodePermissions();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> perms) {
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> perms) {
+    }
+
+    @AfterPermissionGranted(REQUEST_CODE_QRCODE_PERMISSIONS)
+    private void requestCodeQRCodePermissions() {
+        String[] perms = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (!EasyPermissions.hasPermissions(context, perms)) {
+            EasyPermissions.requestPermissions(this, "扫描二维码需要打开相机和散光灯的权限", REQUEST_CODE_QRCODE_PERMISSIONS, perms);
+        }
     }
 }

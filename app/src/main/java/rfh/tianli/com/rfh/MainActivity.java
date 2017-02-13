@@ -28,7 +28,7 @@ import rfh.tianli.com.rfh.fragment.SettingFragment;
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     private Boolean isExit=false;//判断是否要退出程序
-    private Context context;
+    public static Context context;
 
     @ViewInject(R.id.radioGroup)
     private RadioGroup radioGroup;

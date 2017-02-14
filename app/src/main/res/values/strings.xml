@@ -32,6 +32,11 @@
     <string name="string_registselect_yg">员工注册>></string>
     <string name="string_registselect_kh">客户注册>></string>
 
+    <!-- 主界面客户热线 -->
+    <string name="service_tel_dialog_content">请你确认拨打客服热线</string>
+    <string name="service_tel_dialog_info">10086</string>
+
+
     <!--登录页面-->
     <string name="string_loginphone">账户名 (手机号)</string>
     <string name="string_loginpwd">输入密码</string>

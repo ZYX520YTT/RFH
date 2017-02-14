@@ -24,6 +24,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 import rfh.tianli.com.rfh.MainActivity;
 import rfh.tianli.com.rfh.R;
 import rfh.tianli.com.rfh.activity.ScanActivity;
+import rfh.tianli.com.rfh.activity.TelDialoActivity;
 import rfh.tianli.com.rfh.adapter.ServiceNewsAdapter;
 import rfh.tianli.com.rfh.domain.NewsInfo;
 import rfh.tianli.com.rfh.widget.MyImgPager;
@@ -106,6 +107,27 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
                 ((Activity) MainActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });
+
+
+        /***********客服(打电话)*************/
+        iv_customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, TelDialoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tv_customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, TelDialoActivity.class);
+                startActivity(intent);
+            }
+        });
+        /***********客服(打电话)*************/
+
+
     }
 
     //初始化数据

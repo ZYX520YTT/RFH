@@ -66,6 +66,26 @@
     <string name="main_service_customer">客服</string>
 
 
+
+    <!--个人设置界面-->
+    <string name="setting_info">个人信息</string>
+
+
+    <!--个人信息界面-->
+    <string name="personinfo_name">客户名称:</string>
+    <string name="personinfo_pphone">电话号码:</string>
+    <string name="personinfo_sex">性        别:</string>
+    <string name="personinfo_apartname">公寓名称:</string>
+    <string name="personinfo_apartaddress">公寓地址:</string>
+    <string name="personinfo_unitname">单元名称:</string>
+    <string name="personinfo_roomNumber">门牌号码:</string>
+    <string name="personinfo_ename">员工姓名:</string>
+    <string name="personinfo_ephone">手机号码:</string>
+    <string name="personinfo_organization">组织机构:</string>
+    <string name="personinfo_roleList">角色名称:</string>
+
+
+
     <!--网络-->
     <string name="toast_network_error1">网络链接错误，请稍后再试！</string>
     <string name="toast_network_error2">数据异常！</string>

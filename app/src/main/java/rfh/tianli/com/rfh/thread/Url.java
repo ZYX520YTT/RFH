@@ -18,6 +18,7 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/apartment/unit/doorList?id=2
     //https://tianli.qjun.com.cn:8443/sys/list/role
     //https://tianli.qjun.com.cn:8443/sys/list/org
+    //https://tianli.qjun.com.cn:8443/sys/authentic/info
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;
@@ -48,6 +49,12 @@ public class Url {
 
     /**获取角色列表**/
     public static String sys_role=getUrl("sys/role/list");
+
+    /**用户登录后获取详细信息**/
+    public static String sys_info=getUrl("sys/authentic/info");
+
+    /**注销登录***/
+    public static String logout=getUrl("sys/authentic/logout");
 
 
 }

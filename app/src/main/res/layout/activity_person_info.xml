@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_person_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    tools:context="rfh.tianli.com.rfh.activity.PersonInfoActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/main_titlebackground">
+
+        <ImageView
+            android:id="@+id/iv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/btn_return" />
+
+        <TextView
+            android:id="@+id/tv_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_return"
+            android:text="@string/string_return"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/setting_info"
+            android:textColor="@color/white"
+            android:textSize="@dimen/main_title" />
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_title"
+        android:layout_marginTop="23.5dp"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RelativeLayout
+                android:id="@+id/rl_1"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_name"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_item1"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:id="@+id/rl_2"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_1"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_pphone"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+
+                <TextView
+                    android:id="@+id/tv_pphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tv_item2"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_3"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_2"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="性        别:"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item3"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_4"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_3"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/forget_hint"
+                    android:text="@string/personinfo_apartname"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_apartname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item4"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_5"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_4"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_apartaddress"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_apartaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item5"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_6"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_5"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_unitname"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_unitname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item6"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_7"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_below="@id/rl_6"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_item7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_roomNumber"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_roomNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item7"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_8"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:layout_below="@id/rl_7">
+
+                <TextView
+                    android:id="@+id/tv_item8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_ename"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_ename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item8"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_9"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:layout_below="@id/rl_8">
+
+                <TextView
+                    android:id="@+id/tv_item9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_ephone"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_ephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item9"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_10"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:layout_below="@id/rl_9">
+
+                <TextView
+                    android:id="@+id/tv_item10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_organization"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+
+                <TextView
+                    android:id="@+id/tv_organization"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item10"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_11"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:layout_below="@id/rl_10">
+
+                <TextView
+                    android:id="@+id/tv_item11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/personinfo_roleList"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+                <TextView
+                    android:id="@+id/tv_roleList"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/tv_item11"
+                    android:singleLine="true"
+                    android:textColor="@color/forget_hint"
+                    android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

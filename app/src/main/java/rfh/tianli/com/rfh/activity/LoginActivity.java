@@ -132,7 +132,7 @@ public class LoginActivity extends BaseActivity {
                         String name=et_name.getText().toString();
                         String pwd=et_pwd.getText().toString();
 
-                        user.savePhone(name);//保存用户名(手机号码)
+                        user.saveUserNumber(name);//保存用户名(手机号码)
                         user.savePass(pwd);//保存用户密码
 
                         /*****保存用户权限,账号,密码********/

@@ -39,7 +39,7 @@ public class StartActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             User user=new User(context);
-            String name=user.getPhone();
+            String name=user.getUserNumber();
             String pwd=user.getPass();
             if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(pwd)){
                 RequestParams params=new RequestParams();

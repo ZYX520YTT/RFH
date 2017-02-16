@@ -246,7 +246,7 @@ public class RegistByYgActivity extends Activity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     adapter.setIndex(position);
                     tv_apart.setText(sys_org.get(position).getName());
-                    organizationId=position;
+                    organizationId=sys_org.get(position).getId();
                     popupWindow_apart.dismiss();
                 }
             });
@@ -269,7 +269,7 @@ public class RegistByYgActivity extends Activity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     adapter.setIndex(position);
                     tv_qx.setText(sys_role.get(position).getName());
-                    roleId=position;
+                    roleId=sys_role.get(position).getId();
                     popupWindow_qx.dismiss();
                 }
             });

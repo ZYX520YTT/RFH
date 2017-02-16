@@ -51,8 +51,7 @@ public class TelDialoActivity extends Activity {
         btn_confrim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL,
-                        Uri.parse("tel:10086"));
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4001178877"));
                 if (ActivityCompat.checkSelfPermission(TelDialoActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
                     //    ActivityCompat#requestPermissions

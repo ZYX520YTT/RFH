@@ -19,6 +19,8 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/sys/list/role
     //https://tianli.qjun.com.cn:8443/sys/list/org
     //https://tianli.qjun.com.cn:8443/sys/authentic/info
+
+    //https://tianli.qjun.com.cn:8443/res/device/info
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;
@@ -55,6 +57,11 @@ public class Url {
 
     /**注销登录***/
     public static String logout=getUrl("sys/authentic/logout");
+
+
+    /**获取设备信息***/
+    public static String device_info=getUrl("res/device/info");
+
 
 
 }

@@ -16,7 +16,7 @@
             android:layout_height="72dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="27dp"
-            android:src="@drawable/view_head" />
+            android:src="@drawable/mine" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -26,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="11dp"
             android:singleLine="true"
-            android:text="某某女士"
+            android:text="张国荣先生"
             android:textSize="@dimen/forget_hint"
             android:textColor="@color/white" />
 
@@ -37,7 +37,7 @@
             android:layout_below="@id/tv_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5.5dp"
-            android:text="#某栋某单元某号#"
+            android:text="富力桃园1单元1001"
             android:textSize="@dimen/forget_hint"
             android:textColor="@color/white" />
 

@@ -6,6 +6,7 @@ package rfh.tianli.com.rfh.activity;
  * 描述：扫描的Activity
  */
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.nio.ByteBuffer;
 
@@ -38,9 +42,11 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
 
     private ImageView iv_return;
 
+    private Context context;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
+        context=this;
 //        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         iv_return= (ImageView) findViewById(R.id.iv_return);
@@ -86,10 +92,36 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
     }
 
     @Override
-    public void onScanQRCodeSuccess(String result) {
+    public void onScanQRCodeSuccess(String result) {//扫码成功
 //        Log.i(TAG, "result:" + result);
         Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
         vibrate();
+//        System.out.println(result);
+        String author=null;
+        String project=null;
+        String device=null;
+        String code=null;
+        try {
+            JSONObject jsonObject=new JSONObject(result);
+            author=jsonObject.getString("author");
+            project=jsonObject.getString("project");
+            device=jsonObject.getString("device");
+            code=jsonObject.getString("code");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(!TextUtils.isEmpty(code)){
+            Intent intent=new Intent(ScanActivity.this,DeviceInfoActivity.class);
+            intent.putExtra("author",author);
+            intent.putExtra("project",project);
+            intent.putExtra("device",device);
+            intent.putExtra("code",code);
+            startActivity(intent);
+            finish();
+            overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
+        }else{
+            Toast.makeText(context,"不是设备二维码",Toast.LENGTH_SHORT).show();
+        }
         mQRCodeView.startSpot();
     }
 

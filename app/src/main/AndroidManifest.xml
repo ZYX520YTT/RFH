@@ -53,9 +53,12 @@
         <activity
             android:name=".activity.TelDialoActivity"
             android:theme="@style/tel_dialog" />
-        <activity android:name=".activity.PersonInfoActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar"
-            />
+        <activity
+            android:name=".activity.PersonInfoActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".activity.DeviceInfoActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
     </application>
 
 </manifest>

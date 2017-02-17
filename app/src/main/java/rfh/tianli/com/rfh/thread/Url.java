@@ -20,7 +20,7 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/sys/list/org
     //https://tianli.qjun.com.cn:8443/sys/authentic/info
 
-    //https://tianli.qjun.com.cn:8443/res/device/info
+    //https://tianli.qjun.com.cn:8443/res/device/info?code=FLTY-RD-BYQ-002
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;

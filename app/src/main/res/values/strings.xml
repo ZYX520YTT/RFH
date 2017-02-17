@@ -66,9 +66,19 @@
     <string name="main_service_customer">客服</string>
 
 
-
     <!--个人设置界面-->
     <string name="setting_info">个人信息</string>
+
+    <!--设备详情页面-->
+    <string name="device_info">设备详情</string>
+    <string name="device_author">公司名称:</string>
+    <string name="device_project">公寓名称:</string>
+    <string name="device_name">设备名称:</string>
+    <string name="device_code">设备编号:</string>
+    <string name="device_brand">设备牌子:</string>
+    <string name="device_location">设备位置:</string>
+    <string name="device_model">设备模式:</string>
+
 
 
     <!--个人信息界面-->
@@ -83,7 +93,6 @@
     <string name="personinfo_ephone">手机号码:</string>
     <string name="personinfo_organization">组织机构:</string>
     <string name="personinfo_roleList">角色名称:</string>
-
 
 
     <!--网络-->

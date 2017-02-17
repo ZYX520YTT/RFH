@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="47dp"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    >
+
+    <TextView
+        android:id="@+id/tv_u"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电压"
+        android:paddingLeft="5dp"
+        android:textColor="@color/forget_hint"
+        android:textSize="@dimen/forget_hint"
+        />
+
+    <TextView
+        android:id="@+id/tv_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(U):"
+        android:layout_toRightOf="@id/tv_u"
+        android:textColor="@color/forget_hint"
+        android:textSize="@dimen/forget_hint"
+        />
+
+
+
+    <TextView
+        android:id="@+id/tv_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="15dp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/forget_hint"
+        android:textSize="@dimen/forget_hint"
+        android:text="V"
+        />
+
+    <EditText
+        android:id="@+id/et_u"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_code"
+        android:layout_toLeftOf="@id/tv_unit"
+        android:paddingLeft="5dp"
+        android:background="@null"
+        android:singleLine="true"
+        android:textColor="@color/forget_hint"
+        android:textSize="@dimen/forget_hint"
+        android:gravity="center"
+        android:inputType="number"
+        android:digits="0123456789"
+        />
+
+
+
+</RelativeLayout>

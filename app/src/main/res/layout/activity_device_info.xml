@@ -45,18 +45,36 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_title"
-        android:layout_marginTop="23.5dp">
+        android:layout_below="@id/rl_title">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <RelativeLayout
+                android:id="@+id/rl_title1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="设备属性"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    />
+
+
+            </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/rl_1"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
+                android:layout_below="@id/rl_title1"
                 android:background="@color/white">
 
                 <TextView
@@ -87,9 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_1"
-                android:background="@color/white"
                 android:layout_marginTop="1dp"
-                >
+                android:background="@color/white">
 
                 <TextView
                     android:id="@+id/tv_item2"
@@ -264,6 +281,25 @@
                     android:layout_toRightOf="@+id/tv_item7"
                     android:textColor="@color/forget_hint"
                     android:textSize="@dimen/forget_hint" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_title2"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/rl_7"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="检查填表"
+                    android:textColor="#000"
+                    android:textSize="16sp"
+                    />
 
             </RelativeLayout>
 

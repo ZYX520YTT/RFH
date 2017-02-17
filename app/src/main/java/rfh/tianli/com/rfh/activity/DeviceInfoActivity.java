@@ -16,11 +16,16 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cz.msebera.android.httpclient.Header;
 import rfh.tianli.com.rfh.R;
+import rfh.tianli.com.rfh.domain.DeviceDataInfo;
 import rfh.tianli.com.rfh.domain.DeviceInfo;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
@@ -77,13 +82,13 @@ public class DeviceInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
-        context=this;
+        context = this;
         ViewUtils.inject(this);
         dohandler();
         Init();
     }
 
-    private void Init(){
+    private void Init() {
         //对返回按钮的监听
         iv_return.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,90 +105,114 @@ public class DeviceInfoActivity extends Activity {
             }
         });
 
-        Intent intent=getIntent();
-        author=intent.getStringExtra("author");
-        project=intent.getStringExtra("project");
-        code=intent.getStringExtra("code");
+        Intent intent = getIntent();
+        author = intent.getStringExtra("author");
+        project = intent.getStringExtra("project");
+        code = intent.getStringExtra("code");
 
 
         deviceinfo();
     }
-    private void deviceinfo(){
-        RequestParams params=new RequestParams();
-        params.put("code",code);
-        HttpUtils.get(context, Url.device_info,params,deviceinfo_handler);
+
+    private void deviceinfo() {
+        RequestParams params = new RequestParams();
+        params.put("code", code);
+        HttpUtils.get(context, Url.device_info, params, deviceinfo_handler);
     }
 
 
-    private void SetDeviceInfo(DeviceInfo deviceInfo){
-        if(!TextUtils.isEmpty(deviceInfo.getAuthor())){
+    private void SetDeviceInfo(DeviceInfo deviceInfo) {
+        if (!TextUtils.isEmpty(deviceInfo.getAuthor())) {
             tv_author.setText(deviceInfo.getAuthor());
-        }else{
+        } else {
             rl_1.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getProject())){
+        if (!TextUtils.isEmpty(deviceInfo.getProject())) {
             tv_project.setText(deviceInfo.getProject());
-        }else{
+        } else {
             rl_2.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getName())){
+        if (!TextUtils.isEmpty(deviceInfo.getName())) {
             tv_name.setText(deviceInfo.getName());
-        }else{
+        } else {
             rl_3.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getCode())){
+        if (!TextUtils.isEmpty(deviceInfo.getCode())) {
             tv_code.setText(deviceInfo.getCode());
-        }else{
+        } else {
             rl_4.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getBrand())){
+        if (!TextUtils.isEmpty(deviceInfo.getBrand())) {
             tv_brand.setText(deviceInfo.getBrand());
-        }else{
+        } else {
             rl_5.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getLocation())){
+        if (!TextUtils.isEmpty(deviceInfo.getLocation())) {
             tv_location.setText(deviceInfo.getLocation());
-        }else{
+        } else {
             rl_6.setVisibility(View.GONE);
         }
 
-        if(!TextUtils.isEmpty(deviceInfo.getModel())){
+        if (!TextUtils.isEmpty(deviceInfo.getModel())) {
             tv_model.setText(deviceInfo.getModel());
-        }else{
+        } else {
             rl_7.setVisibility(View.GONE);
         }
 
     }
 
 
-    private void dohandler(){
-        deviceinfo_handler=new AsyncHttpResponseHandler() {
+    private void dohandler() {
+        deviceinfo_handler = new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String rst=new String(responseBody);
+                String rst = new String(responseBody);
                 try {
-                    JSONObject jsonObject=new JSONObject(rst);
-                    String result=jsonObject.getString("result");
+                    JSONObject jsonObject = new JSONObject(rst);
+                    String result = jsonObject.getString("result");
 
-                    if(result.equals("success")){
-                        JSONObject jsonObject1=jsonObject.getJSONObject("device");
-                        String brand=jsonObject1.getString("brand");
-                        String location=jsonObject1.getString("location");
-                        String model=jsonObject1.getString("model");
-                        String name=jsonObject1.getString("name");
-                        DeviceInfo deviceInfo=new DeviceInfo(brand,project,
-                                author,name,model,location,code);
+                    if (result.equals("success")) {
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("device");
+                        String brand = jsonObject1.getString("brand");
+                        String location = jsonObject1.getString("location");
+                        String model = jsonObject1.getString("model");
+                        String name1 = jsonObject1.getString("name");
+                        DeviceInfo deviceInfo = new DeviceInfo(brand, project,
+                                author, name1, model, location, code);
                         SetDeviceInfo(deviceInfo);
 
-                        System.out.println(deviceInfo.toString());
-                    }else{
-                        String message=jsonObject.getString("message");
-                        Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+//                        System.out.println(deviceInfo.toString());
+                        List<DeviceDataInfo> deviceDataInfoList = new ArrayList<>();
+                        JSONArray jsonArray = jsonObject1.getJSONArray("dataList");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject2 = jsonArray.getJSONObject(i);
+                            String code = jsonObject2.getString("code");
+                            String dataType = jsonObject2.getString("dataType");
+                            String description = jsonObject2.getString("description");
+                            long id = jsonObject2.getLong("id");
+                            String name = jsonObject2.getString("name");
+                            String sortNumber = jsonObject2.getString("sortNumber");
+                            String unit = jsonObject2.getString("unit");
+                            String widgetType = jsonObject2.getString("widgetType");
+                            DeviceDataInfo deviceDataInfo = new DeviceDataInfo(code, widgetType
+                                    , unit, sortNumber, name, id, description, dataType);
+                            deviceDataInfoList.add(deviceDataInfo);
+                        }
+
+                        /********************设置信息*****************************/
+
+
+                        /********************设置信息*****************************/
+
+
+                    } else {
+                        String message = jsonObject.getString("message");
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -199,16 +228,12 @@ public class DeviceInfoActivity extends Activity {
     }
 
 
-
-
-
     //直接点击返回按钮
     @Override
     public void onBackPressed() {
         finish();
         overridePendingTransition(R.anim.out_up_in, R.anim.out_down_out);
     }
-
 
 
 }

@@ -94,7 +94,7 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
     @Override
     public void onScanQRCodeSuccess(String result) {//扫码成功
 //        Log.i(TAG, "result:" + result);
-        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
         vibrate();
 //        System.out.println(result);
         String author=null;

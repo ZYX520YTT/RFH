@@ -20,7 +20,7 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/sys/list/org
     //https://tianli.qjun.com.cn:8443/sys/authentic/info
 
-    //https://tianli.qjun.com.cn:8443/res/device/info?code=FLTY-RD-BYQ-002
+    //https://tianli.qjun.com.cn:8443/qrimages/FLTY/XXXX-YY-ZZZ-001.png
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;
@@ -61,6 +61,15 @@ public class Url {
 
     /**获取设备信息***/
     public static String device_info=getUrl("res/device/info");
+
+    /**获取当前登录用户待做巡检任务列表***/
+    public static String task_undo=getUrl("/patrol/task/undo");
+
+    /**开始一个巡查任务***/
+    public static String task_start=getUrl("/patrol/task/start");
+
+    /**二维码巡查**/
+    public static String patrol_qr=getUrl("/patrol/patrol/qr");
 
 
 

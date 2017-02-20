@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="47dp"
-    android:gravity="center_vertical"
-    android:background="@color/white"
+    android:layout_height="match_parent"
     >
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="电压"
-        android:paddingLeft="5dp"
-        android:textColor="@color/forget_hint"
-        android:textSize="@dimen/forget_hint"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        >
 
-    <CheckBox
-        android:id="@+id/cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电压"
+            android:paddingLeft="5dp"
+            android:textColor="@color/forget_hint"
+            android:textSize="@dimen/forget_hint"
+            android:layout_centerVertical="true"
+            />
 
-
-
+        <CheckBox
+            android:id="@+id/cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            />
+    </RelativeLayout>
 
 
 </RelativeLayout>

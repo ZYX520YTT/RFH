@@ -25,10 +25,12 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 import rfh.tianli.com.rfh.R;
+import rfh.tianli.com.rfh.adapter.DeviceInfoAdapter;
 import rfh.tianli.com.rfh.domain.DeviceDataInfo;
 import rfh.tianli.com.rfh.domain.DeviceInfo;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
+import rfh.tianli.com.rfh.widget.ShowListView;
 
 public class DeviceInfoActivity extends Activity {
 
@@ -73,6 +75,8 @@ public class DeviceInfoActivity extends Activity {
     private TextView tv_location;
     @ViewInject(R.id.tv_model)
     private TextView tv_model;
+    @ViewInject(R.id.ls_show)
+    private ShowListView ls_show;
 
     private String author;
     private String project;
@@ -186,7 +190,6 @@ public class DeviceInfoActivity extends Activity {
                                 author, name1, model, location, code);
                         SetDeviceInfo(deviceInfo);
 
-//                        System.out.println(deviceInfo.toString());
                         List<DeviceDataInfo> deviceDataInfoList = new ArrayList<>();
                         JSONArray jsonArray = jsonObject1.getJSONArray("dataList");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -205,6 +208,8 @@ public class DeviceInfoActivity extends Activity {
                         }
 
                         /********************设置信息*****************************/
+
+                        ls_show.setAdapter(new DeviceInfoAdapter(context,deviceDataInfoList));
 
 
                         /********************设置信息*****************************/

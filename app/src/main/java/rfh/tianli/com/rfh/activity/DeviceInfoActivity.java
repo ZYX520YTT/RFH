@@ -236,6 +236,14 @@ public class DeviceInfoActivity extends Activity {
     //直接点击返回按钮
     @Override
     public void onBackPressed() {
+        if(DeviceInfoAdapter.pvTime1.isShowing()){
+            DeviceInfoAdapter.pvTime1.dismiss();
+            return;
+        }
+        if(DeviceInfoAdapter.pvTime2.isShowing()){
+            DeviceInfoAdapter.pvTime2.dismiss();
+            return;
+        }
         finish();
         overridePendingTransition(R.anim.out_up_in, R.anim.out_down_out);
     }

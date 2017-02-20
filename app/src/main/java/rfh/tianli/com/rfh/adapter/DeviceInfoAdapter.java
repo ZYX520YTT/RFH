@@ -8,6 +8,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.TimePickerView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import rfh.tianli.com.rfh.R;
@@ -28,7 +32,6 @@ public class DeviceInfoAdapter extends BaseAdapter {
     //7种类型
     private final int VIEW_TYPE = 7;
 
-
     private final int TYPE_1 = 0;
     private final int TYPE_2 = 1;
     private final int TYPE_3 = 2;
@@ -37,10 +40,22 @@ public class DeviceInfoAdapter extends BaseAdapter {
     private final int TYPE_6 = 5;
     private final int TYPE_7 = 6;
 
+    public static TimePickerView pvTime1,pvTime2;
+
+
 
     public DeviceInfoAdapter(Context context, List<DeviceDataInfo> deviceDataInfos) {
         this.context = context;
         this.deviceDataInfos = deviceDataInfos;
+        pvTime1=new TimePickerView(context,TimePickerView.Type.YEAR_MONTH_DAY);
+        pvTime1.setTime(new Date());
+        pvTime1.setCyclic(false);
+        pvTime1.setCancelable(true);
+
+        pvTime2=new TimePickerView(context,TimePickerView.Type.MONTH_DAY_HOUR_MIN);
+        pvTime2.setTime(new Date());
+        pvTime2.setCyclic(false);
+        pvTime2.setCancelable(true);
     }
 
 
@@ -146,14 +161,44 @@ public class DeviceInfoAdapter extends BaseAdapter {
                     viewHolder6.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder6.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
 
-
-
+                    final ViewHolder6 finalViewHolder = viewHolder6;
+                    pvTime1.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+                        @Override
+                        public void onTimeSelect(Date date) {
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
+                            finalViewHolder.tv_datetime.setText(format.format(date));
+                        }
+                    });
+                    viewHolder6.tv_datetime.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            pvTime1.show();
+                        }
+                    });
                     convertView.setTag(R.layout.item_type_date, viewHolder6);
                 case TYPE_7:
                     viewHolder7 = new ViewHolder7();
                     convertView = View.inflate(context, R.layout.item_type_datetime, null);
                     viewHolder7.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder7.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
+
+                    final ViewHolder7 finalViewHolder1 = viewHolder7;
+                    pvTime2.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+                        @Override
+                        public void onTimeSelect(Date date) {
+                            SimpleDateFormat format = new SimpleDateFormat("MM月dd日HH时mm分");
+                            finalViewHolder1.tv_datetime.setText(format.format(date));
+                        }
+                    });
+
+                    viewHolder7.tv_datetime.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            pvTime2.show();
+                        }
+                    });
+
+
                     convertView.setTag(R.layout.item_type_datetime, viewHolder7);
                 default:
                     break;
@@ -270,6 +315,22 @@ public class DeviceInfoAdapter extends BaseAdapter {
                     viewHolder6.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder6.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
                     convertView.setTag(R.layout.item_type_date, viewHolder6);
+
+
+                    final ViewHolder6 finalViewHolder = viewHolder6;
+                    pvTime1.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+                        @Override
+                        public void onTimeSelect(Date date) {
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日");
+                            finalViewHolder.tv_datetime.setText(format.format(date));
+                        }
+                    });
+                    viewHolder6.tv_datetime.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            pvTime1.show();
+                        }
+                    });
                 }
                 viewHolder6.tv_desc.setText(deviceDataInfo.getName());
                 break;
@@ -279,6 +340,22 @@ public class DeviceInfoAdapter extends BaseAdapter {
                     convertView = View.inflate(context, R.layout.item_type_datetime, null);
                     viewHolder7.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder7.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
+
+                    final ViewHolder7 finalViewHolder1 = viewHolder7;
+                    pvTime2.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+                        @Override
+                        public void onTimeSelect(Date date) {
+                            SimpleDateFormat format = new SimpleDateFormat("MM月dd日HH时mm分");
+                            finalViewHolder1.tv_datetime.setText(format.format(date));
+                        }
+                    });
+
+                    viewHolder7.tv_datetime.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            pvTime2.show();
+                        }
+                    });
                     convertView.setTag(R.layout.item_type_datetime, viewHolder7);
                 }
                 viewHolder7.tv_desc.setText(deviceDataInfo.getName());

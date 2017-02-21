@@ -28,15 +28,16 @@
             </intent-filter>
         </activity>
 
-        <!--<activity-->
-        <!--android:name=".activity.TestActiviy"-->
-        <!--android:theme="@android:style/Theme.Light.NoTitleBar">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
+        <!-- <activity -->
+        <!-- android:name=".activity.TestActiviy" -->
+        <!-- android:theme="@android:style/Theme.Light.NoTitleBar"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
 
         <activity
             android:name=".activity.LoginActivity"
@@ -70,7 +71,12 @@
         <activity
             android:name=".activity.DeviceInfoActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
-
+        <activity
+            android:name=".activity.TaskActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".activity.TaskDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
     </application>
 
 </manifest>

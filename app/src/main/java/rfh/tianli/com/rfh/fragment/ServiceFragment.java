@@ -23,7 +23,7 @@ import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 import rfh.tianli.com.rfh.MainActivity;
 import rfh.tianli.com.rfh.R;
-import rfh.tianli.com.rfh.activity.ScanActivity;
+import rfh.tianli.com.rfh.activity.TaskActivity;
 import rfh.tianli.com.rfh.activity.TelDialoActivity;
 import rfh.tianli.com.rfh.adapter.ServiceNewsAdapter;
 import rfh.tianli.com.rfh.domain.NewsInfo;
@@ -100,10 +100,17 @@ public class ServiceFragment extends Fragment implements MyImgPager.ImageCycleVi
 
 
         //点击扫描二维码
+//        iv_qrcodeinquire.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(context, ScanActivity.class));
+//                ((Activity) MainActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
+//            }
+//        });
         iv_qrcodeinquire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context, ScanActivity.class));
+                startActivity(new Intent(context, TaskActivity.class));
                 ((Activity) MainActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });

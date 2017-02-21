@@ -209,6 +209,7 @@ public class DeviceInfoActivity extends Activity {
 
                         /********************设置信息*****************************/
 
+
                         ls_show.setAdapter(new DeviceInfoAdapter(context,deviceDataInfoList));
 
 

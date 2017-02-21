@@ -80,7 +80,6 @@
     <string name="device_model">设备模式:</string>
 
 
-
     <!--个人信息界面-->
     <string name="personinfo_name">客户名称:</string>
     <string name="personinfo_pphone">电话号码:</string>
@@ -93,6 +92,10 @@
     <string name="personinfo_ephone">手机号码:</string>
     <string name="personinfo_organization">组织机构:</string>
     <string name="personinfo_roleList">角色名称:</string>
+
+
+    <!--任务列表-->
+    <string name="string_task_title">任务列表</string>
 
 
     <!--网络-->

@@ -20,7 +20,7 @@ public class Url {
     //https://tianli.qjun.com.cn:8443/sys/list/org
     //https://tianli.qjun.com.cn:8443/sys/authentic/info
 
-    //https://tianli.qjun.com.cn:8443/qrimages/FLTY/XXXX-YY-ZZZ-001.png
+    //https://tianli.qjun.com.cn:8443/patrol/task/undo
     private static String getUrl(String activity){
         String url=null;
         url=Url+activity;

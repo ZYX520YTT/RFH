@@ -68,7 +68,17 @@ public class Url {
     /***获取任务详细信息****/
     public static String task_detail=getUrl("/patrol/task/detail");
 
+    /**开始一个巡查任务***/
+    public static String task_start=getUrl("/patrol/task/start");
 
+    /**完成任务***/
+    public static String task_finish=getUrl("/patrol/task/finish");
+
+    /****二维码巡查******/
+    public static String patrol_qr=getUrl("/patrol/patrol/qr");
+
+   /***提交巡查数据***/
+    public static String saveValues=getUrl("/patrol/patrol/saveValues");
 
 
 }

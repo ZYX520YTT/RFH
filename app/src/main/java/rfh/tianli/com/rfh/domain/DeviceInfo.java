@@ -8,90 +8,36 @@ package rfh.tianli.com.rfh.domain;
 
 public class DeviceInfo {
 
-    private String brand;
-    private String code;
-    private String location;
-    private String model;
-    private String name;
-    private String author;
-    private String project;
+    private String deviceName;
+    private String deviceCode;
 
-    public DeviceInfo(String brand, String project, String author, String name, String model, String location, String code) {
-        this.brand = brand;
-        this.project = project;
-        this.author = author;
-        this.name = name;
-        this.model = model;
-        this.location = location;
-        this.code = code;
+    public DeviceInfo(String deviceName, String deviceCode) {
+
+        this.deviceName = deviceName;
+        this.deviceCode = deviceCode;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
-    public String getProject() {
-        return project;
+    public String getDeviceCode() {
+        return deviceCode;
     }
 
-    public void setProject(String project) {
-        this.project = project;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public void setDeviceCode(String deviceCode) {
+        this.deviceCode = deviceCode;
     }
 
     @Override
     public String toString() {
         return "DeviceInfo{" +
-                "brand='" + brand + '\'' +
-                ", code='" + code + '\'' +
-                ", location='" + location + '\'' +
-                ", model='" + model + '\'' +
-                ", name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", project='" + project + '\'' +
+                "deviceName='" + deviceName + '\'' +
+                ", deviceCode='" + deviceCode + '\'' +
                 '}';
     }
 }

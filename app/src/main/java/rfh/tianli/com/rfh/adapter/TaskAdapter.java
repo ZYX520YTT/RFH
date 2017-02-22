@@ -101,6 +101,7 @@ public class TaskAdapter extends BaseAdapter {
         private TextView tv_status;
     }
 
+    //时间戳转正常时间
     private String gettime(long time){
         String res;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
@@ -116,7 +117,9 @@ public class TaskAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent=new Intent(context, TaskDetailActivity.class);
                 long taskId=taskInfoList.get(position).getId();
+                String status=taskInfoList.get(position).getStatus();
                 intent.putExtra("taskId",taskId);
+                intent.putExtra("status",status);
                 context.startActivity(intent);
                 ((Activity) TaskActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }

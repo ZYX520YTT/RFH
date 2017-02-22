@@ -12,12 +12,18 @@ public class DeviceDataInfo {
     private String description;
     private long id;
     private String name;
-    private String sortNumber;
+    private Integer sortNumber;
     private String unit;
     private String widgetType;
+    private String status;
+    private long recordTime;
+    private String value;
 
-    public DeviceDataInfo(String code, String widgetType, String unit, String sortNumber, String name, long id, String description, String dataType) {
+    public DeviceDataInfo(String code, String value, long recordTime, String status, String widgetType, String unit, Integer sortNumber, String name, long id, String description, String dataType) {
         this.code = code;
+        this.value = value;
+        this.recordTime = recordTime;
+        this.status = status;
         this.widgetType = widgetType;
         this.unit = unit;
         this.sortNumber = sortNumber;
@@ -33,6 +39,30 @@ public class DeviceDataInfo {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public long getRecordTime() {
+        return recordTime;
+    }
+
+    public void setRecordTime(long recordTime) {
+        this.recordTime = recordTime;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getWidgetType() {
@@ -51,11 +81,11 @@ public class DeviceDataInfo {
         this.unit = unit;
     }
 
-    public String getSortNumber() {
+    public Integer getSortNumber() {
         return sortNumber;
     }
 
-    public void setSortNumber(String sortNumber) {
+    public void setSortNumber(Integer sortNumber) {
         this.sortNumber = sortNumber;
     }
 
@@ -99,9 +129,12 @@ public class DeviceDataInfo {
                 ", description='" + description + '\'' +
                 ", id=" + id +
                 ", name='" + name + '\'' +
-                ", sortNumber='" + sortNumber + '\'' +
+                ", sortNumber=" + sortNumber +
                 ", unit='" + unit + '\'' +
                 ", widgetType='" + widgetType + '\'' +
+                ", status='" + status + '\'' +
+                ", recordTime=" + recordTime +
+                ", value='" + value + '\'' +
                 '}';
     }
 }

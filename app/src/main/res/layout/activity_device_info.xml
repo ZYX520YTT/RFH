@@ -50,7 +50,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="50dp"
+            >
 
 
             <RelativeLayout
@@ -75,7 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_title1"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/tv_item1"
@@ -106,6 +110,7 @@
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_1"
                 android:layout_marginTop="1dp"
+                android:visibility="gone"
                 android:background="@color/white">
 
                 <TextView
@@ -198,6 +203,7 @@
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_4"
                 android:layout_marginTop="1dp"
+                android:visibility="gone"
                 android:background="@color/white">
 
                 <TextView
@@ -229,6 +235,7 @@
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_5"
                 android:layout_marginTop="1dp"
+                android:visibility="gone"
                 android:background="@color/white">
 
                 <TextView
@@ -260,6 +267,7 @@
                 android:layout_height="47dp"
                 android:layout_below="@id/rl_6"
                 android:layout_marginTop="1dp"
+                android:visibility="gone"
                 android:background="@color/white">
 
                 <TextView
@@ -311,6 +319,19 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 />
+
+            <Button
+                android:id="@+id/btn_post"
+                android:layout_width="300dp"
+                android:layout_height="43.5dp"
+                android:layout_below="@id/ls_show"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/select_forget_btn"
+                android:text="提交表单"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forget_btn" />
 
 
         </RelativeLayout>

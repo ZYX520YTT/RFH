@@ -42,6 +42,10 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
 
     private ImageView iv_return;
 
+
+    private String needRemark;
+    private long taskId;
+
     private Context context;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,10 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
                 overridePendingTransition(R.anim.out_right_in, R.anim.out_left_out);
             }
         });
+
+        Intent intent=getIntent();
+        needRemark=intent.getStringExtra("needRemark");
+        taskId=intent.getLongExtra("taskId",0);
     }
 
     @Override
@@ -116,6 +124,8 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
             intent.putExtra("project",project);
             intent.putExtra("device",device);
             intent.putExtra("code",code);
+            intent.putExtra("needRemark",needRemark);
+            intent.putExtra("taskId",taskId);
             startActivity(intent);
             finish();
             overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);

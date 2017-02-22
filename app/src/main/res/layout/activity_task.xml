@@ -56,11 +56,11 @@
         <rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView
             android:id="@+id/ls_show"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
         </rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView>
+
 
         <include layout="@layout/load_more" />
 

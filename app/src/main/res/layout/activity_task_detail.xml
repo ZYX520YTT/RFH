@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/string_task_title"
+            android:text="任务详情"
             android:textColor="@color/white"
             android:textSize="@dimen/main_title" />
 
@@ -63,12 +63,52 @@
             android:src="@drawable/icon_code" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ls_show"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/rl_title"
-        />
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="130dp"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ls_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btn_task"
+                android:layout_width="300dp"
+                android:layout_height="43.5dp"
+                android:layout_below="@id/ls_show"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="163.5dp"
+                android:background="@drawable/select_forget_btn"
+                android:text="开始任务"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forget_btn" />
+
+            <Button
+                android:id="@+id/btn_postremark"
+                android:layout_width="300dp"
+                android:layout_height="43.5dp"
+                android:layout_below="@id/btn_task"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/select_forget_btn"
+                android:text="提交备注"
+                android:textColor="@color/white"
+                android:textSize="@dimen/forget_btn" />
+        </RelativeLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>

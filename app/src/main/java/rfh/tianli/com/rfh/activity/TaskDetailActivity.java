@@ -98,17 +98,21 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
             }
         });
 
-        btn_postremark.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         final Intent intent = getIntent();
         taskId = intent.getLongExtra("taskId", 0);
         status = intent.getStringExtra("status");
         getTaskInfo(taskId);
+
+
+        btn_postremark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(context,RemarkActivity.class);
+                intent1.putExtra("taskId",taskId);
+                startActivity(intent1);
+            }
+        });
 
 
         if(status.equals("1")){

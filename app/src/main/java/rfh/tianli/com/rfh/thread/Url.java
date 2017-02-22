@@ -80,5 +80,8 @@ public class Url {
    /***提交巡查数据***/
     public static String saveValues=getUrl("/patrol/patrol/saveValues");
 
+    /***填写备注***/
+    public static String task_remark=getUrl("/patrol/task/remark");
+
 
 }

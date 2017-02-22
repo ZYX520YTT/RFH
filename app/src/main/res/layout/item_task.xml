@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    >
 
     <RelativeLayout
         android:id="@+id/rl_item"
@@ -9,7 +11,8 @@
         android:layout_height="73.5dp"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@color/white"
         >
 
         <TextView
@@ -41,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tv_location"
             android:layout_marginLeft="130dp"
+            android:layout_marginTop="3.5dp"
             android:text="02-20 10:00:00"
             android:textSize="13dp" />
 
@@ -64,7 +68,8 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="已完成"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            />
 
 
     </RelativeLayout>

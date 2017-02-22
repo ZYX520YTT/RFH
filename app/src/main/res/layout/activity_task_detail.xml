@@ -4,6 +4,7 @@
     android:id="@+id/activity_task_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     tools:context="rfh.tianli.com.rfh.activity.TaskDetailActivity">
 
     <RelativeLayout
@@ -67,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rl_title"
-        android:layout_marginTop="14dp" />
+        />
 
 
 </RelativeLayout>

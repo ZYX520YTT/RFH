@@ -200,7 +200,6 @@ public class PersonInfoActivity extends Activity {
                 try {
                     JSONObject jsonObject=new JSONObject(rst);
                     String result=jsonObject.getString("result");
-                    System.out.println("结果:"+rst);
                     if(result.equals("success")){
                         String proprietorInforealName=null;
                         String proprietorInfomobile=null;

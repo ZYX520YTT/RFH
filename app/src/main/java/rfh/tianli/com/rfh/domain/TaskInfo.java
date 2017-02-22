@@ -17,9 +17,19 @@ public class TaskInfo {
     private String name;
     private String status;
     private String type;
+    private String needRemark;
+    private long startTime;
+    private long endTime;
+    private String remarks;
+    private Integer timeTaking;
 
-    public TaskInfo(String apartmentName, String type, String status, String name, Integer timeLimit, long id, String executorName, long executeTime, String creatorName) {
+    public TaskInfo(String apartmentName, Integer timeTaking, String remarks, long endTime, long startTime, String needRemark, String type, String status, String name, Integer timeLimit, long id, String executorName, long executeTime, String creatorName) {
         this.apartmentName = apartmentName;
+        this.timeTaking = timeTaking;
+        this.remarks = remarks;
+        this.endTime = endTime;
+        this.startTime = startTime;
+        this.needRemark = needRemark;
         this.type = type;
         this.status = status;
         this.name = name;
@@ -36,6 +46,46 @@ public class TaskInfo {
 
     public void setApartmentName(String apartmentName) {
         this.apartmentName = apartmentName;
+    }
+
+    public Integer getTimeTaking() {
+        return timeTaking;
+    }
+
+    public void setTimeTaking(Integer timeTaking) {
+        this.timeTaking = timeTaking;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getNeedRemark() {
+        return needRemark;
+    }
+
+    public void setNeedRemark(String needRemark) {
+        this.needRemark = needRemark;
     }
 
     public String getType() {
@@ -114,6 +164,11 @@ public class TaskInfo {
                 ", name='" + name + '\'' +
                 ", status='" + status + '\'' +
                 ", type='" + type + '\'' +
+                ", needRemark='" + needRemark + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", remarks='" + remarks + '\'' +
+                ", timeTaking=" + timeTaking +
                 '}';
     }
 }

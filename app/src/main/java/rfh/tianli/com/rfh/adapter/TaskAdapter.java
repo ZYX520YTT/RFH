@@ -1,10 +1,11 @@
 package rfh.tianli.com.rfh.adapter;
 
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 import rfh.tianli.com.rfh.R;
+import rfh.tianli.com.rfh.activity.TaskActivity;
+import rfh.tianli.com.rfh.activity.TaskDetailActivity;
 import rfh.tianli.com.rfh.domain.TaskInfo;
 
 /**
@@ -22,7 +25,7 @@ import rfh.tianli.com.rfh.domain.TaskInfo;
  * 描述：
  */
 
-public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> {
+public class TaskAdapter extends BaseAdapter {
 
     private Context context;
     private List<TaskInfo> taskInfoList;
@@ -33,14 +36,37 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
 
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder=new MyViewHolder(LayoutInflater.from(context).
-                inflate(R.layout.item_task,parent,false));
-        return myViewHolder;
+    public int getCount() {
+        return taskInfoList.size();
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public Object getItem(int position) {
+        return taskInfoList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if(convertView==null){
+            convertView=View.inflate(context, R.layout.item_task,null);
+            holder=new ViewHolder();
+            holder.rl_item= (RelativeLayout) convertView.findViewById(R.id.rl_item);
+            holder.tv_name= (TextView) convertView.findViewById(R.id.tv_name);
+            holder.tv_location= (TextView) convertView.findViewById(R.id.tv_location);
+            holder.tv_time= (TextView) convertView.findViewById(R.id.tv_time);
+            holder.iv_status= (ImageView) convertView.findViewById(R.id.iv_status);
+            holder.tv_status= (TextView) convertView.findViewById(R.id.tv_status);
+            convertView.setTag(holder);
+        }else{
+            holder= (ViewHolder) convertView.getTag();
+        }
+
         TaskInfo taskInfo=taskInfoList.get(position);
         holder.tv_name.setText(taskInfo.getName());
         holder.tv_location.setText(taskInfo.getApartmentName());
@@ -61,36 +87,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
             holder.tv_status.setText("已完成");
             holder.rl_item.setBackgroundResource(R.drawable.squer);
         }
+        OnClick(holder,position);
+        return convertView;
     }
 
 
-    @Override
-    public int getItemCount() {
-        return taskInfoList.size();
-    }
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
-
+    class ViewHolder{
         private RelativeLayout rl_item;
         private TextView tv_name;
         private TextView tv_location;
         private TextView tv_time;
         private ImageView iv_status;
         private TextView tv_status;
-
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            rl_item= (RelativeLayout) itemView.findViewById(R.id.rl_item);
-            tv_name= (TextView) itemView.findViewById(R.id.tv_name);
-            tv_location= (TextView) itemView.findViewById(R.id.tv_location);
-            tv_time= (TextView) itemView.findViewById(R.id.tv_time);
-            iv_status= (ImageView) itemView.findViewById(R.id.iv_status);
-            tv_status= (TextView) itemView.findViewById(R.id.tv_status);
-        }
     }
-
-
 
     private String gettime(long time){
         String res;
@@ -98,5 +107,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.MyViewHolder> 
         Date date = new Date(time);
         res = simpleDateFormat.format(date);
         return res;
+    }
+
+
+    private void OnClick(ViewHolder holder, final int position){
+        holder.rl_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, TaskDetailActivity.class);
+                long taskId=taskInfoList.get(position).getId();
+                intent.putExtra("taskId",taskId);
+                context.startActivity(intent);
+                ((Activity) TaskActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
+            }
+        });
     }
 }

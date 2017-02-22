@@ -3,9 +3,9 @@ package rfh.tianli.com.rfh.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +27,15 @@ import rfh.tianli.com.rfh.adapter.TaskAdapter;
 import rfh.tianli.com.rfh.domain.TaskInfo;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
+import rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout;
 
 public class TaskActivity extends Activity {
 
-    private Context context;
+    public static Context context;
     private AsyncHttpResponseHandler undotask_handler;
+
+    private int pageNum;
+    private int pageSize=8;
 
     /********
      * 返回
@@ -41,7 +45,16 @@ public class TaskActivity extends Activity {
     @ViewInject(R.id.tv_return)
     private TextView tv_return;
     @ViewInject(R.id.ls_show)
-    private RecyclerView ls_show;
+    private ListView ls_show;
+
+    @ViewInject(R.id.refresh_view)
+    private PullToRefreshLayout refresh_view;
+
+    private boolean isLoadmore;//true为加载更多，false为下拉刷新
+
+    List<TaskInfo> taskInfoList;
+    private TaskAdapter taskAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +84,39 @@ public class TaskActivity extends Activity {
         });
 
 
-        getUndoTask();
+
+
+        taskInfoList=new ArrayList<>();
+        refresh_view.setOnRefreshListener(new MyListener());
+        getFirst();
 
     }
 
-    private void getUndoTask() {
+
+
+
+    //下拉刷新
+    private void getFirst(){
+        isLoadmore=false;
+        pageNum=0;
+
         RequestParams params = new RequestParams();
+        params.put("pageNum",pageNum);
+        params.put("pageSize",pageSize);
+        HttpUtils.get(context, Url.task_undo, params, undotask_handler);
+
+        taskAdapter = new TaskAdapter(context,taskInfoList);
+        ls_show.setAdapter(taskAdapter);
+
+    }
+
+
+    //下拉加载更多
+    private void getNext(){
+        isLoadmore=true;
+        RequestParams params = new RequestParams();
+        params.put("pageNum",pageNum);
+        params.put("pageSize",pageSize);
         HttpUtils.get(context, Url.task_undo, params, undotask_handler);
     }
 
@@ -87,45 +127,152 @@ public class TaskActivity extends Activity {
                 String rst = new String(responseBody);
                 try {
                     JSONObject jsonObject = new JSONObject(rst);
-                    System.out.println(rst);
+//                    System.out.println(rst);
                     String result = jsonObject.getString("result");
                     if (result.equals("success")) {
-                        List<TaskInfo> taskInfoList = new ArrayList<>();
+                        if(!isLoadmore){
+                            taskInfoList.clear();
+                        }
                         JSONArray jsonArray = jsonObject.getJSONArray("taskList");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            long id = jsonObject1.getLong("id");
-                            String name = jsonObject1.getString("name");
-                            String type = jsonObject1.getString("type");
-                            Integer timeLimit = jsonObject1.getInt("timeLimit");
-                            String apartmentName = jsonObject1.getString("apartmentName");
-                            String status = jsonObject1.getString("status");
-                            long executeTime = jsonObject1.getLong("executeTime");
-                            String creatorName = jsonObject1.getString("creatorName");
-                            String executorName = jsonObject1.getString("executorName");
-                            TaskInfo taskInfo = new TaskInfo(apartmentName, type, status
-                                    , name, timeLimit, id, executorName, executeTime, creatorName);
+                            long id=0;
+                            String name=null;
+                            String type=null;
+                            Integer timeLimit=0;
+                            String apartmentName=null;
+                            String status=null;
+                            long executeTime=0;
+                            String creatorName=null;
+                            String executorName=null;
+                            long startTime=0;
+                            long endTime=0;
+                            String remarks=null;
+                            Integer timeTaking=0;
+                            String needRemark=null;
+                            try {
+                                id = jsonObject1.getLong("id");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                name = jsonObject1.getString("name");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                type = jsonObject1.getString("type");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                timeLimit = jsonObject1.getInt("timeLimit");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                apartmentName = jsonObject1.getString("apartmentName");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                status = jsonObject1.getString("status");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                executeTime = jsonObject1.getLong("executeTime");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                creatorName = jsonObject1.getString("creatorName");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                executorName = jsonObject1.getString("executorName");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                startTime=jsonObject1.getLong("startTime");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                endTime=jsonObject1.getLong("endTime");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                remarks=jsonObject1.getString("remarks");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                timeTaking=jsonObject1.getInt("timeTaking");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            try {
+                                needRemark=jsonObject1.getString("needRemark");
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                            TaskInfo taskInfo=new TaskInfo(apartmentName,timeTaking,remarks,
+                                    endTime,startTime,needRemark,type,status,name,
+                                    timeLimit,id,executorName,executeTime,creatorName);
                             taskInfoList.add(taskInfo);
                         }
 
                         /******设置数据************/
-                        ls_show.setAdapter(new TaskAdapter(context, taskInfoList));
+//                        ls_show.setAdapter(new TaskAdapter(context, taskInfoList));
 
+                         taskAdapter.notifyDataSetChanged();
                         /******设置数据************/
+                        pageNum+=pageSize;
+                        if(isLoadmore){
+                            refresh_view.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                        }else{
+                            refresh_view.refreshFinish(PullToRefreshLayout.SUCCEED);
+                        }
                     } else {
                         String message = jsonObject.getString("message");
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                        if(isLoadmore){
+                            refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
+                        }else{
+                            refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if(isLoadmore){
+                        refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
+                    }else{
+                        refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
+                    }
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//                String rst=new String(responseBody);
+//                System.out.println("解析结果:"+rst);
                 Toast.makeText(context, R.string.toast_network_error1, Toast.LENGTH_SHORT).show();
+                if(isLoadmore){
+                    refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
+                }else{
+                    refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
+                }
             }
         };
+
+
+
+
 
     }
 
@@ -134,5 +281,20 @@ public class TaskActivity extends Activity {
     public void onBackPressed() {
         finish();
         overridePendingTransition(R.anim.out_up_in, R.anim.out_down_out);
+    }
+
+
+
+    class MyListener implements PullToRefreshLayout.OnRefreshListener{
+
+        @Override
+        public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+            getFirst();
+        }
+
+        @Override
+        public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+            getNext();
+        }
     }
 }

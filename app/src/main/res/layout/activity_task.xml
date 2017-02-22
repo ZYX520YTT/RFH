@@ -4,14 +4,14 @@
     android:id="@+id/activity_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_background"
     tools:context="rfh.tianli.com.rfh.activity.TaskActivity">
 
     <RelativeLayout
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:background="@color/main_titlebackground"
-        >
+        android:background="@color/main_titlebackground">
 
         <ImageView
             android:id="@+id/iv_return"
@@ -20,8 +20,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:background="@drawable/btn_return"
-            />
+            android:background="@drawable/btn_return" />
 
         <TextView
             android:id="@+id/tv_return"
@@ -45,14 +44,28 @@
     </RelativeLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ls_show"
+    <rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout
+        android:id="@+id/refresh_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl_title"
-        android:layout_marginTop="14dp"
-        />
+        android:layout_height="match_parent"
+        android:layout_below="@id/rl_title">
 
+        <include layout="@layout/refresh_head" />
+
+
+        <rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView
+            android:id="@+id/ls_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+        </rfh.tianli.com.rfh.widget.pulltorefresh.PullableListView>
+
+        <include layout="@layout/load_more" />
+
+
+    </rfh.tianli.com.rfh.widget.pulltorefresh.PullToRefreshLayout>
 
 
 </RelativeLayout>

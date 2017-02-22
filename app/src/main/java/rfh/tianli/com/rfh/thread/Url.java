@@ -62,14 +62,12 @@ public class Url {
     /**获取设备信息***/
     public static String device_info=getUrl("res/device/info");
 
-    /**获取当前登录用户待做巡检任务列表***/
-    public static String task_undo=getUrl("/patrol/task/undo");
+    /**分页获取当前登录用户巡检任务列表***/
+    public static String task_undo=getUrl("/patrol/task/execPageList");
 
-    /**开始一个巡查任务***/
-    public static String task_start=getUrl("/patrol/task/start");
+    /***获取任务详细信息****/
+    public static String task_detail=getUrl("/patrol/task/detail");
 
-    /**二维码巡查**/
-    public static String patrol_qr=getUrl("/patrol/patrol/qr");
 
 
 

@@ -24,7 +24,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="电梯设备设施周巡查记录"
-            android:textSize="16.5sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_location"
@@ -36,7 +36,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="富力桃园"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_time"
@@ -68,7 +68,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="已完成"
-            android:textSize="13sp"
+            android:textSize="@dimen/title_back"
             />
 
 

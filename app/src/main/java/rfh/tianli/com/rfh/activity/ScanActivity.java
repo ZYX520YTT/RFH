@@ -135,6 +135,8 @@ public class ScanActivity extends AppCompatActivity implements QRCodeView.Delega
         mQRCodeView.startSpot();
     }
 
+
+
     @Override
     public void onScanQRCodeOpenCameraError() {
         Log.e(TAG, "打开相机出错");

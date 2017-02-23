@@ -35,7 +35,7 @@ public class TaskActivity extends Activity {
     private AsyncHttpResponseHandler undotask_handler;
 
     private int pageNum;
-    private int pageSize=8;
+    private int pageSize=10;
 
     /********
      * 返回
@@ -232,7 +232,9 @@ public class TaskActivity extends Activity {
 
                          taskAdapter.notifyDataSetChanged();
                         /******设置数据************/
-                        pageNum+=pageSize;
+                        if(jsonArray.length()!=0){
+                            pageNum+=1;
+                        }
                         if(isLoadmore){
                             refresh_view.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                         }else{

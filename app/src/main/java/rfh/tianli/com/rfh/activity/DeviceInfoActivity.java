@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -29,6 +30,7 @@ import rfh.tianli.com.rfh.R;
 import rfh.tianli.com.rfh.adapter.DeviceInfoAdapter;
 import rfh.tianli.com.rfh.domain.DeviceDataInfo;
 import rfh.tianli.com.rfh.domain.DeviceInfo;
+import rfh.tianli.com.rfh.domain.PatrolInfo;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
 import rfh.tianli.com.rfh.widget.ShowListView;
@@ -36,7 +38,7 @@ import rfh.tianli.com.rfh.widget.ShowListView;
 public class DeviceInfoActivity extends Activity {
 
     private Context context;
-    private AsyncHttpResponseHandler deviceinfo_handler;
+    private AsyncHttpResponseHandler deviceinfo_handler, saveValues_handler;
 
     /********
      * 返回
@@ -85,6 +87,10 @@ public class DeviceInfoActivity extends Activity {
     private String project;
     private String code;
     private long taskId;
+    private String deviceId;
+
+    List<DeviceDataInfo> deviceDataInfoList;
+    private DeviceInfoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,7 @@ public class DeviceInfoActivity extends Activity {
     }
 
     private void Init() {
+        deviceDataInfoList = new ArrayList<>();
         //对返回按钮的监听
         iv_return.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +124,9 @@ public class DeviceInfoActivity extends Activity {
         btn_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                List<PatrolInfo> patrolInfos = adapter.getData();
+                String url = Url.saveValues + String.format("?taskId=%s&deviceId=%s", taskId, deviceId);
+                HttpUtils.postJson(context, url, new Gson().toJson(patrolInfos), saveValues_handler);
             }
         });
 
@@ -127,8 +136,10 @@ public class DeviceInfoActivity extends Activity {
         code = intent.getStringExtra("code");
         taskId = intent.getLongExtra("taskId", 0);
 
-
         deviceinfo();
+
+        adapter = new DeviceInfoAdapter(context, deviceDataInfoList);
+        ls_show.setAdapter(adapter);
     }
 
     private void deviceinfo() {
@@ -174,9 +185,9 @@ public class DeviceInfoActivity extends Activity {
                         JSONArray jsonArray = jsonObject.getJSONArray("dataList");
                         String deviceName = jsonObject.getString("deviceName");
                         String deviceCode = jsonObject.getString("deviceCode");
+                        deviceId = jsonObject.getString("deviceId");
                         DeviceInfo deviceInfo = new DeviceInfo(deviceName, deviceCode);
                         SetDeviceInfo(deviceInfo);
-                        List<DeviceDataInfo> deviceDataInfoList = new ArrayList<>();
                         for (int i = 0; i < jsonArray.length(); i++) {
                             String code = null;
                             String dataType = null;
@@ -251,8 +262,8 @@ public class DeviceInfoActivity extends Activity {
                                     name, id, description, dataType);
                             deviceDataInfoList.add(deviceDataInfo);
                         }
+                        adapter.notifyDataSetChanged();
 
-                        ls_show.setAdapter(new DeviceInfoAdapter(context, deviceDataInfoList));
 
                     } else {
                         String message = jsonObject.getString("message");
@@ -263,6 +274,35 @@ public class DeviceInfoActivity extends Activity {
                     e.printStackTrace();
                 }
 
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(context, "网络连接错误，请检查网络设置后重试。", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+
+        saveValues_handler = new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String rst = new String(responseBody);
+//                System.out.println("最终："+rst);
+                try {
+                    JSONObject jsonObject = new JSONObject(rst);
+                    String result = jsonObject.getString("result");
+                    String message = jsonObject.getString("message");
+                    if (result.equals("success")) {
+                        Boolean isDeviceFinished = jsonObject.getBoolean("isDeviceFinished");
+
+                        finish();
+                        overridePendingTransition(R.anim.out_right_in, R.anim.out_left_out);
+                    }
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override

@@ -40,7 +40,7 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
 
     private Context context;
 
-    private AsyncHttpResponseHandler taskdetail_handler,taskstart_handler,taskfinish_handler;
+    private AsyncHttpResponseHandler taskdetail_handler, taskstart_handler, taskfinish_handler;
     /********
      * 返回
      *********/
@@ -55,7 +55,9 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
     @ViewInject(R.id.btn_postremark)
     private Button btn_postremark;
 
-    /**扫码**/
+    /**
+     * 扫码
+     **/
     @ViewInject(R.id.tv_sm)
     private TextView tv_sm;
     @ViewInject(R.id.iv_sm)
@@ -108,16 +110,16 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         btn_postremark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(context,RemarkActivity.class);
-                intent1.putExtra("taskId",taskId);
+                Intent intent1 = new Intent(context, RemarkActivity.class);
+                intent1.putExtra("taskId", taskId);
                 startActivity(intent1);
             }
         });
 
 
-        if(status.equals("1")){
+        if (status.equals("1")) {
             btn_task.setText("开始任务");
-        }else{
+        } else {
             btn_task.setText("完成任务");
         }
 
@@ -128,17 +130,17 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         tv_sm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(status.equals("3")){
-                    Toast.makeText(context,"任务已完成",Toast.LENGTH_SHORT).show();
-                }else if(status.equals("2")){
+                if (status.equals("3")) {
+                    Toast.makeText(context, "任务已完成", Toast.LENGTH_SHORT).show();
+                } else if (status.equals("2")) {
                     //跳到扫码界面
-                    Intent intent1=new Intent(TaskDetailActivity.this,ScanActivity.class);
-                    intent1.putExtra("needRemark",needRemark);
-                    intent1.putExtra("taskId",taskId);
+                    Intent intent1 = new Intent(TaskDetailActivity.this, ScanActivity.class);
+                    intent1.putExtra("needRemark", needRemark);
+                    intent1.putExtra("taskId", taskId);
                     startActivity(intent1);
-                    overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
-                }else{
-                    Toast.makeText(context,"任务为开始,请先开始任务!",Toast.LENGTH_SHORT).show();
+                    overridePendingTransition(R.anim.in_left_in, R.anim.in_right_out);
+                } else {
+                    Toast.makeText(context, "任务为开始,请先开始任务!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -146,21 +148,20 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         iv_sm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(status.equals("3")){
-                    Toast.makeText(context,"任务已完成",Toast.LENGTH_SHORT).show();
-                }else if(status.equals("2")){
+                if (status.equals("3")) {
+                    Toast.makeText(context, "任务已完成", Toast.LENGTH_SHORT).show();
+                } else if (status.equals("2")) {
                     //跳到扫码界面
-                    Intent intent1=new Intent(TaskDetailActivity.this,ScanActivity.class);
-                    intent1.putExtra("needRemark",needRemark);
-                    intent1.putExtra("taskId",taskId);
+                    Intent intent1 = new Intent(TaskDetailActivity.this, ScanActivity.class);
+                    intent1.putExtra("needRemark", needRemark);
+                    intent1.putExtra("taskId", taskId);
                     startActivity(intent1);
-                    overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
-                }else{
-                    Toast.makeText(context,"任务为开始,请先开始任务!",Toast.LENGTH_SHORT).show();
+                    overridePendingTransition(R.anim.in_left_in, R.anim.in_right_out);
+                } else {
+                    Toast.makeText(context, "任务为开始,请先开始任务!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
         //点击任务按钮
@@ -168,14 +169,14 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
             @Override
             public void onClick(View v) {
 
-                if(status.equals("3")){//调用完成任务的接口
-                    RequestParams params=new RequestParams();
-                    params.put("taskId",taskId);
-                    HttpUtils.post(context,Url.task_finish,params,taskfinish_handler);
-                }else{////调用开始任务的接口
-                    RequestParams params=new RequestParams();
-                    params.put("taskId",taskId);
-                    HttpUtils.post(context,Url.task_start,params,taskstart_handler);
+                if (status.equals("3")) {//调用完成任务的接口
+                    RequestParams params = new RequestParams();
+                    params.put("taskId", taskId);
+                    HttpUtils.post(context, Url.task_finish, params, taskfinish_handler);
+                } else {////调用开始任务的接口
+                    RequestParams params = new RequestParams();
+                    params.put("taskId", taskId);
+                    HttpUtils.post(context, Url.task_start, params, taskstart_handler);
                 }
             }
         });
@@ -416,25 +417,25 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         };
 
 
-        taskstart_handler=new AsyncHttpResponseHandler() {
+        taskstart_handler = new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String rst=new String(responseBody);
+                String rst = new String(responseBody);
                 try {
-                    JSONObject jsonObject=new JSONObject(rst);
-                    String result=jsonObject.getString("result");
-                    String message=jsonObject.getString("message");
-                    if(result.equals("success")){
-                        JSONObject jsonObject1=jsonObject.getJSONObject("taskInfo");
-                        status=jsonObject1.getString("status");
-                        needRemark=jsonObject1.getString("needRemark");
-                        if(status.equals("1")){
+                    JSONObject jsonObject = new JSONObject(rst);
+                    String result = jsonObject.getString("result");
+                    String message = jsonObject.getString("message");
+                    if (result.equals("success")) {
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("taskInfo");
+                        status = jsonObject1.getString("status");
+                        needRemark = jsonObject1.getString("needRemark");
+                        if (status.equals("1")) {
                             btn_task.setText("开始任务");
-                        }else{
+                        } else {
                             btn_task.setText("完成任务");
                         }
                     }
-                    Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -448,24 +449,24 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         };
 
 
-        taskfinish_handler=new AsyncHttpResponseHandler() {
+        taskfinish_handler = new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String rst=new String(responseBody);
+                String rst = new String(responseBody);
                 try {
-                    JSONObject jsonObject=new JSONObject(rst);
-                    String result=jsonObject.getString("result");
-                    String message=jsonObject.getString("message");
-                    if(result.equals("success")){
-                        JSONObject jsonObject1=jsonObject.getJSONObject("taskInfo");
-                        status=jsonObject1.getString("status");
-                        if(status.equals("1")){
+                    JSONObject jsonObject = new JSONObject(rst);
+                    String result = jsonObject.getString("result");
+                    String message = jsonObject.getString("message");
+                    if (result.equals("success")) {
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("taskInfo");
+                        status = jsonObject1.getString("status");
+                        if (status.equals("1")) {
                             btn_task.setText("开始任务");
-                        }else{
+                        } else {
                             btn_task.setText("完成任务");
                         }
                     }
-                    Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -514,4 +515,6 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
             EasyPermissions.requestPermissions(this, "扫描二维码需要打开相机和散光灯的权限", REQUEST_CODE_QRCODE_PERMISSIONS, perms);
         }
     }
+
+
 }

@@ -120,9 +120,13 @@ public class TaskAdapter extends BaseAdapter {
                 String status=taskInfoList.get(position).getStatus();
                 intent.putExtra("taskId",taskId);
                 intent.putExtra("status",status);
-                context.startActivity(intent);
+                intent.putExtra("position",position);
+//                context.startActivity(intent);
+                int requestCode = 101;//请求码，可以随意写，只要和OnActivityResult中的请求码想对应就行
+                ((Activity)context).startActivityForResult(intent,requestCode);
                 ((Activity) TaskActivity.context).overridePendingTransition(R.anim.in_left_in,R.anim.in_right_out);
             }
         });
     }
+
 }

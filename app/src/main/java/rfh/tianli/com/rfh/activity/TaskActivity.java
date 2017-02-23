@@ -2,6 +2,7 @@ package rfh.tianli.com.rfh.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class TaskActivity extends Activity {
     private AsyncHttpResponseHandler undotask_handler;
 
     private int pageNum;
-    private int pageSize=10;
+    private int pageSize = 10;
 
     /********
      * 返回
@@ -84,39 +85,35 @@ public class TaskActivity extends Activity {
         });
 
 
-
-
-        taskInfoList=new ArrayList<>();
+        taskInfoList = new ArrayList<>();
         refresh_view.setOnRefreshListener(new MyListener());
         getFirst();
 
     }
 
 
-
-
     //下拉刷新
-    private void getFirst(){
-        isLoadmore=false;
-        pageNum=0;
+    private void getFirst() {
+        isLoadmore = false;
+        pageNum = 0;
 
         RequestParams params = new RequestParams();
-        params.put("pageNum",pageNum);
-        params.put("pageSize",pageSize);
+        params.put("pageNum", pageNum);
+        params.put("pageSize", pageSize);
         HttpUtils.get(context, Url.task_undo, params, undotask_handler);
 
-        taskAdapter = new TaskAdapter(context,taskInfoList);
+        taskAdapter = new TaskAdapter(context, taskInfoList);
         ls_show.setAdapter(taskAdapter);
 
     }
 
 
     //下拉加载更多
-    private void getNext(){
-        isLoadmore=true;
+    private void getNext() {
+        isLoadmore = true;
         RequestParams params = new RequestParams();
-        params.put("pageNum",pageNum);
-        params.put("pageSize",pageSize);
+        params.put("pageNum", pageNum);
+        params.put("pageSize", pageSize);
         HttpUtils.get(context, Url.task_undo, params, undotask_handler);
     }
 
@@ -130,130 +127,130 @@ public class TaskActivity extends Activity {
 //                    System.out.println(rst);
                     String result = jsonObject.getString("result");
                     if (result.equals("success")) {
-                        if(!isLoadmore){
+                        if (!isLoadmore) {
                             taskInfoList.clear();
                         }
                         JSONArray jsonArray = jsonObject.getJSONArray("taskList");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            long id=0;
-                            String name=null;
-                            String type=null;
-                            Integer timeLimit=0;
-                            String apartmentName=null;
-                            String status=null;
-                            long executeTime=0;
-                            String creatorName=null;
-                            String executorName=null;
-                            long startTime=0;
-                            long endTime=0;
-                            String remarks=null;
-                            Integer timeTaking=0;
-                            String needRemark=null;
+                            long id = 0;
+                            String name = null;
+                            String type = null;
+                            Integer timeLimit = 0;
+                            String apartmentName = null;
+                            String status = null;
+                            long executeTime = 0;
+                            String creatorName = null;
+                            String executorName = null;
+                            long startTime = 0;
+                            long endTime = 0;
+                            String remarks = null;
+                            Integer timeTaking = 0;
+                            String needRemark = null;
                             try {
                                 id = jsonObject1.getLong("id");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 name = jsonObject1.getString("name");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 type = jsonObject1.getString("type");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 timeLimit = jsonObject1.getInt("timeLimit");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 apartmentName = jsonObject1.getString("apartmentName");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 status = jsonObject1.getString("status");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 executeTime = jsonObject1.getLong("executeTime");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 creatorName = jsonObject1.getString("creatorName");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
                                 executorName = jsonObject1.getString("executorName");
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                startTime=jsonObject1.getLong("startTime");
-                            }catch (Exception e){
+                                startTime = jsonObject1.getLong("startTime");
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                endTime=jsonObject1.getLong("endTime");
-                            }catch (Exception e){
+                                endTime = jsonObject1.getLong("endTime");
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                remarks=jsonObject1.getString("remarks");
-                            }catch (Exception e){
+                                remarks = jsonObject1.getString("remarks");
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                timeTaking=jsonObject1.getInt("timeTaking");
-                            }catch (Exception e){
+                                timeTaking = jsonObject1.getInt("timeTaking");
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             try {
-                                needRemark=jsonObject1.getString("needRemark");
-                            }catch (Exception e){
+                                needRemark = jsonObject1.getString("needRemark");
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
-                            TaskInfo taskInfo=new TaskInfo(apartmentName,timeTaking,remarks,
-                                    endTime,startTime,needRemark,type,status,name,
-                                    timeLimit,id,executorName,executeTime,creatorName);
+                            TaskInfo taskInfo = new TaskInfo(apartmentName, timeTaking, remarks,
+                                    endTime, startTime, needRemark, type, status, name,
+                                    timeLimit, id, executorName, executeTime, creatorName);
                             taskInfoList.add(taskInfo);
                         }
 
                         /******设置数据************/
 //                        ls_show.setAdapter(new TaskAdapter(context, taskInfoList));
 
-                         taskAdapter.notifyDataSetChanged();
+                        taskAdapter.notifyDataSetChanged();
                         /******设置数据************/
-                        if(jsonArray.length()!=0){
-                            pageNum+=1;
+                        if (jsonArray.length() != 0) {
+                            pageNum += 1;
                         }
-                        if(isLoadmore){
+                        if (isLoadmore) {
                             refresh_view.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-                        }else{
+                        } else {
                             refresh_view.refreshFinish(PullToRefreshLayout.SUCCEED);
                         }
                     } else {
                         String message = jsonObject.getString("message");
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-                        if(isLoadmore){
+                        if (isLoadmore) {
                             refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
-                        }else{
+                        } else {
                             refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
                         }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    if(isLoadmore){
+                    if (isLoadmore) {
                         refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
-                    }else{
+                    } else {
                         refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
                     }
                 }
@@ -264,18 +261,35 @@ public class TaskActivity extends Activity {
 //                String rst=new String(responseBody);
 //                System.out.println("解析结果:"+rst);
                 Toast.makeText(context, R.string.toast_network_error1, Toast.LENGTH_SHORT).show();
-                if(isLoadmore){
+                if (isLoadmore) {
                     refresh_view.loadmoreFinish(PullToRefreshLayout.FAIL);
-                }else{
+                } else {
                     refresh_view.refreshFinish(PullToRefreshLayout.FAIL);
                 }
             }
         };
 
+    }
 
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 101:
+                if (resultCode == Activity.RESULT_OK) {
+                    int position = data.getIntExtra("position", 0);
+                    String status = data.getStringExtra("status");
+                    if (status.equals("3")) {//已完成
+                        taskInfoList.get(position).setStatus("3");
+                    } else if (status.equals("2")) {//进行中
+                        taskInfoList.get(position).setStatus("2");
+                    } else {//已分配
+                        taskInfoList.get(position).setStatus("1");
+                    }
+                    taskAdapter.notifyDataSetChanged();
+                }
+                break;
+        }
     }
 
     //直接点击返回按钮
@@ -286,8 +300,7 @@ public class TaskActivity extends Activity {
     }
 
 
-
-    class MyListener implements PullToRefreshLayout.OnRefreshListener{
+    class MyListener implements PullToRefreshLayout.OnRefreshListener {
 
         @Override
         public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {

@@ -126,6 +126,8 @@ public class DeviceInfoActivity extends Activity {
             public void onClick(View v) {
                 List<PatrolInfo> patrolInfos = adapter.getData();
                 String url = Url.saveValues + String.format("?taskId=%s&deviceId=%s", taskId, deviceId);
+                String json=new Gson().toJson(patrolInfos);
+                System.out.println(json);
                 HttpUtils.postJson(context, url, new Gson().toJson(patrolInfos), saveValues_handler);
             }
         });
@@ -293,8 +295,6 @@ public class DeviceInfoActivity extends Activity {
                     String result = jsonObject.getString("result");
                     String message = jsonObject.getString("message");
                     if (result.equals("success")) {
-                        Boolean isDeviceFinished = jsonObject.getBoolean("isDeviceFinished");
-
                         finish();
                         overridePendingTransition(R.anim.out_right_in, R.anim.out_left_out);
                     }

@@ -2,8 +2,8 @@ package rfh.tianli.com.rfh.adapter;
 
 import android.content.Context;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -37,7 +37,6 @@ public class DeviceInfoAdapter extends BaseAdapter {
     private Context context;
     private List<DeviceDataInfo> deviceDataInfos;
 
-    //    private TextWatcher watcher1,watcher2,watcher4,watcher5,watcher6,watcher7;
     //7种类型
     private final int VIEW_TYPE = 7;
 
@@ -52,6 +51,7 @@ public class DeviceInfoAdapter extends BaseAdapter {
     public static TimePickerView pvTime1, pvTime2;
 
     private Map<Integer, PatrolInfo> listdata;
+
 
 
     public DeviceInfoAdapter(Context context, List<DeviceDataInfo> deviceDataInfos) {
@@ -141,11 +141,13 @@ public class DeviceInfoAdapter extends BaseAdapter {
             switch (type) {
                 case TYPE_1:
                     viewHolder1 = new ViewHolder1();
-                    convertView = View.inflate(context, R.layout.item_type_text, null);
+//                    convertView = View.inflate(context, R.layout.item_type_text, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_text,parent,false);
                     viewHolder1.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder1.et_desc = (EditText) convertView.findViewById(R.id.et_desc);
 
                     final ViewHolder1 finalViewHolder2 = viewHolder1;
+
                     TextWatcher watcher1 = new TextWatcher() {
                         @Override
                         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -160,15 +162,18 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder2.et_desc.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder2.et_desc.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
                     viewHolder1.et_desc.addTextChangedListener(watcher1);
                     convertView.setTag(R.layout.item_type_text, viewHolder1);
+                    viewHolder1.et_desc.setTag(position);
                     break;
                 case TYPE_2:
                     viewHolder2 = new ViewHolder2();
-                    convertView = View.inflate(context, R.layout.item_type_textarea, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_textarea,parent,false);
                     viewHolder2.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder2.et_desc = (EditText) convertView.findViewById(R.id.et_desc);
                     final ViewHolder2 finalViewHolder3 = viewHolder2;
@@ -187,34 +192,44 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder3.et_desc.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder3.et_desc.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
-
                     viewHolder2.et_desc.addTextChangedListener(watcher2);
+                    viewHolder2.et_desc.setTag(position);
                     convertView.setTag(R.layout.item_type_textarea, viewHolder2);
                     break;
                 case TYPE_3:
                     viewHolder3 = new ViewHolder3();
-                    convertView = View.inflate(context, R.layout.item_type_checkbox, null);
+//                    convertView = View.inflate(context, R.layout.item_type_checkbox, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_checkbox,parent,false);
                     viewHolder3.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder3.cb = (CheckBox) convertView.findViewById(R.id.cb);
 
+                    final ViewHolder3 finalViewHolder8 = viewHolder3;
                     viewHolder3.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            int position1= (int) finalViewHolder8.cb.getTag();
                             if (isChecked) {
-                                listdata.put(position, new PatrolInfo( id,"true"));
+                                listdata.put(position1, new PatrolInfo( id,"true"));
+                                deviceDataInfos.get(position1).setValue("true");
                             } else {
-                                listdata.put(position, new PatrolInfo( id,"false"));
+                                listdata.put(position1, new PatrolInfo( id,"false"));
+                                deviceDataInfos.get(position1).setValue("false");
                             }
+
                         }
                     });
+                    viewHolder3.cb.setTag(position);
                     convertView.setTag(R.layout.item_type_checkbox, viewHolder3);
                     break;
                 case TYPE_4:
                     viewHolder4 = new ViewHolder4();
-                    convertView = View.inflate(context, R.layout.item_type_integer, null);
+//                    convertView = View.inflate(context, R.layout.item_type_integer, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_integer,parent,false);
                     viewHolder4.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder4.tv_code = (TextView) convertView.findViewById(R.id.tv_code);
                     viewHolder4.tv_unit = (TextView) convertView.findViewById(R.id.tv_unit);
@@ -234,15 +249,19 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder4.et_value.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder4.et_value.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
+                    viewHolder4.et_value.setTag(position);
                     viewHolder4.et_value.addTextChangedListener(watcher4);
                     convertView.setTag(R.layout.item_type_integer, viewHolder4);
                     break;
                 case TYPE_5:
                     viewHolder5 = new ViewHolder5();
-                    convertView = View.inflate(context, R.layout.item_type_decimal, null);
+//                    convertView = View.inflate(context, R.layout.item_type_decimal, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_decimal,parent,false);
                     viewHolder5.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder5.tv_code = (TextView) convertView.findViewById(R.id.tv_code);
                     viewHolder5.tv_unit = (TextView) convertView.findViewById(R.id.tv_unit);
@@ -262,15 +281,20 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder5.et_value.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder5.et_value.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
+                    viewHolder5.et_value.setTag(position);
                     viewHolder5.et_value.addTextChangedListener(watcher5);
                     convertView.setTag(R.layout.item_type_decimal, viewHolder5);
                     break;
                 case TYPE_6:
                     viewHolder6 = new ViewHolder6();
-                    convertView = View.inflate(context, R.layout.item_type_date, null);
+//                    convertView = View.inflate(context, R.layout.item_type_date, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_date,parent,false);
+
                     viewHolder6.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder6.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
                     final ViewHolder6 finalViewHolder6 = viewHolder6;
@@ -288,7 +312,9 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder6.tv_datetime.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder6.tv_datetime.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
                     viewHolder6.tv_datetime.addTextChangedListener(watcher6);
@@ -307,10 +333,13 @@ public class DeviceInfoAdapter extends BaseAdapter {
                             pvTime1.show();
                         }
                     });
+                    viewHolder6.tv_datetime.setTag(position);
                     convertView.setTag(R.layout.item_type_date, viewHolder6);
                 case TYPE_7:
                     viewHolder7 = new ViewHolder7();
-                    convertView = View.inflate(context, R.layout.item_type_datetime, null);
+//                    convertView = View.inflate(context, R.layout.item_type_datetime, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_datetime,parent,false);
+
                     viewHolder7.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder7.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
                     final ViewHolder7 finalViewHolder7 = viewHolder7;
@@ -328,7 +357,9 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder7.tv_datetime.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder7.tv_datetime.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
                     viewHolder7.tv_datetime.addTextChangedListener(watcher7);
@@ -347,7 +378,7 @@ public class DeviceInfoAdapter extends BaseAdapter {
                             pvTime2.show();
                         }
                     });
-
+                    viewHolder7.tv_datetime.setTag(position);
 
                     convertView.setTag(R.layout.item_type_datetime, viewHolder7);
                 default:
@@ -386,7 +417,9 @@ public class DeviceInfoAdapter extends BaseAdapter {
             case TYPE_1:
                 if (viewHolder1 == null) {
                     viewHolder1 = new ViewHolder1();
-                    convertView = View.inflate(context, R.layout.item_type_text, null);
+//                    convertView = View.inflate(context, R.layout.item_type_text, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_text,parent,false);
+
                     viewHolder1.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder1.et_desc = (EditText) convertView.findViewById(R.id.et_desc);
 
@@ -405,22 +438,23 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder2.et_desc.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (Integer) finalViewHolder2.et_desc.getTag();
+                            listdata.put(position1, new PatrolInfo( id,desc));
+                            deviceDataInfos.get(position1).setValue(desc);
                         }
                     };
                     viewHolder1.et_desc.addTextChangedListener(watcher1);
+                    viewHolder1.et_desc.setTag(position);
                     convertView.setTag(R.layout.item_type_text, viewHolder1);
                 }
                 viewHolder1.tv_desc.setText(deviceDataInfo.getName());
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder1.et_desc.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
             case TYPE_2:
                 if (viewHolder2 == null) {
                     viewHolder2 = new ViewHolder2();
-                    convertView = View.inflate(context, R.layout.item_type_textarea, null);
+//                    convertView = View.inflate(context, R.layout.item_type_textarea, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_textarea,parent,false);
+
                     viewHolder2.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder2.et_desc = (EditText) convertView.findViewById(R.id.et_desc);
                     final ViewHolder2 finalViewHolder3 = viewHolder2;
@@ -439,54 +473,52 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder3.et_desc.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder3.et_desc.getTag();
+                            listdata.put(position1, new PatrolInfo( id,desc));
+                            deviceDataInfos.get(position1).setValue(desc);
                         }
                     };
 
                     viewHolder2.et_desc.addTextChangedListener(watcher2);
+                    viewHolder2.et_desc.setTag(position);
                     convertView.setTag(R.layout.item_type_textarea, viewHolder2);
                 }
                 viewHolder2.tv_desc.setText(deviceDataInfo.getName());
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder2.et_desc.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
             case TYPE_3:
                 if (viewHolder3 == null) {
                     viewHolder3 = new ViewHolder3();
-                    convertView = View.inflate(context, R.layout.item_type_checkbox, null);
+//                    convertView = View.inflate(context, R.layout.item_type_checkbox, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_checkbox,parent,false);
+
                     viewHolder3.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder3.cb = (CheckBox) convertView.findViewById(R.id.cb);
 
+                    final ViewHolder3 finalViewHolder9 = viewHolder3;
                     viewHolder3.cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            int position1= (int) finalViewHolder9.cb.getTag();
                             if (isChecked) {
-                                listdata.put(position, new PatrolInfo( id,"true"));
+                                listdata.put(position1, new PatrolInfo( id,"true"));
+                                deviceDataInfos.get(position1).setValue("true");
                             } else {
-                                listdata.put(position, new PatrolInfo( id,"false"));
+                                listdata.put(position1, new PatrolInfo( id,"false"));
+                                deviceDataInfos.get(position1).setValue("false");
                             }
                         }
                     });
+                    viewHolder3.cb.setTag(position);
                     convertView.setTag(R.layout.item_type_checkbox, viewHolder3);
                 }
                 viewHolder3.tv_name.setText(deviceDataInfo.getName());
-                String value=deviceDataInfo.getValue();
-                if(!TextUtils.isEmpty(value)){
-                    if(value.equals("true")){
-                        viewHolder3.cb.setChecked(true);
-                    }else{
-                        viewHolder3.cb.setChecked(false);
-                    }
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
-
                 break;
             case TYPE_4:
                 if (viewHolder4 == null) {
                     viewHolder4 = new ViewHolder4();
-                    convertView = View.inflate(context, R.layout.item_type_integer, null);
+//                    convertView = View.inflate(context, R.layout.item_type_integer, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_integer,parent,false);
+
                     viewHolder4.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder4.tv_code = (TextView) convertView.findViewById(R.id.tv_code);
                     viewHolder4.tv_unit = (TextView) convertView.findViewById(R.id.tv_unit);
@@ -506,9 +538,12 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder4.et_value.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder4.et_value.getTag();
+                            listdata.put(position1, new PatrolInfo( id,desc));
+                            deviceDataInfos.get(position1).setValue(desc);
                         }
                     };
+                    viewHolder4.et_value.setTag(position);
                     viewHolder4.et_value.addTextChangedListener(watcher4);
                     convertView.setTag(R.layout.item_type_integer, viewHolder4);
                 }
@@ -523,16 +558,14 @@ public class DeviceInfoAdapter extends BaseAdapter {
                 } else {
                     viewHolder4.tv_unit.setVisibility(View.INVISIBLE);
                 }
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder4.et_value.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
 
             case TYPE_5:
                 if (viewHolder5 == null) {
                     viewHolder5 = new ViewHolder5();
-                    convertView = View.inflate(context, R.layout.item_type_decimal, null);
+//                    convertView = View.inflate(context, R.layout.item_type_decimal, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_decimal,parent,false);
+
                     viewHolder5.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                     viewHolder5.tv_code = (TextView) convertView.findViewById(R.id.tv_code);
                     viewHolder5.tv_unit = (TextView) convertView.findViewById(R.id.tv_unit);
@@ -552,9 +585,12 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder5.et_value.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder5.et_value.getTag();
+                            listdata.put(position1, new PatrolInfo( id,desc));
+                            deviceDataInfos.get(position1).setValue(desc);
                         }
                     };
+                    viewHolder5.et_value.setTag(position);
                     viewHolder5.et_value.addTextChangedListener(watcher5);
                     convertView.setTag(R.layout.item_type_decimal, viewHolder5);
                 }
@@ -569,15 +605,13 @@ public class DeviceInfoAdapter extends BaseAdapter {
                 } else {
                     viewHolder5.tv_unit.setVisibility(View.INVISIBLE);
                 }
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder5.et_value.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
             case TYPE_6:
                 if (viewHolder6 == null) {
                     viewHolder6 = new ViewHolder6();
-                    convertView = View.inflate(context, R.layout.item_type_date, null);
+//                    convertView = View.inflate(context, R.layout.item_type_date, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_date,parent,false);
+
                     viewHolder6.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder6.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
                     final ViewHolder6 finalViewHolder6 = viewHolder6;
@@ -595,7 +629,9 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder6.tv_datetime.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder6.tv_datetime.getTag();
+                            listdata.put(position1, new PatrolInfo( id,desc));
+                            deviceDataInfos.get(position1).setValue(desc);
                         }
                     };
                     viewHolder6.tv_datetime.addTextChangedListener(watcher6);
@@ -614,18 +650,16 @@ public class DeviceInfoAdapter extends BaseAdapter {
                             pvTime1.show();
                         }
                     });
+                    viewHolder6.tv_datetime.setTag(position);
                     convertView.setTag(R.layout.item_type_date, viewHolder6);
                 }
                 viewHolder6.tv_desc.setText(deviceDataInfo.getName());
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder6.tv_datetime.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
             case TYPE_7:
                 if (viewHolder7 == null) {
                     viewHolder7 = new ViewHolder7();
-                    convertView = View.inflate(context, R.layout.item_type_datetime, null);
+//                    convertView = View.inflate(context, R.layout.item_type_datetime, null);
+                    convertView= LayoutInflater.from(context).inflate(R.layout.item_type_datetime,parent,false);
                     viewHolder7.tv_desc = (TextView) convertView.findViewById(R.id.tv_desc);
                     viewHolder7.tv_datetime = (TextView) convertView.findViewById(R.id.tv_datetime);
                     final ViewHolder7 finalViewHolder7 = viewHolder7;
@@ -643,7 +677,9 @@ public class DeviceInfoAdapter extends BaseAdapter {
                         @Override
                         public void afterTextChanged(Editable s) {
                             String desc = finalViewHolder7.tv_datetime.getText().toString();
-                            listdata.put(position, new PatrolInfo( id,desc));
+                            int position1= (int) finalViewHolder7.tv_datetime.getTag();
+                            deviceDataInfos.get(position1).setValue(desc);
+                            listdata.put(position1, new PatrolInfo( id,desc));
                         }
                     };
                     viewHolder7.tv_datetime.addTextChangedListener(watcher7);
@@ -662,15 +698,11 @@ public class DeviceInfoAdapter extends BaseAdapter {
                             pvTime2.show();
                         }
                     });
-
+                    viewHolder7.tv_datetime.setTag(position);
 
                     convertView.setTag(R.layout.item_type_datetime, viewHolder7);
                 }
                 viewHolder7.tv_desc.setText(deviceDataInfo.getName());
-                if(!TextUtils.isEmpty(deviceDataInfo.getValue())){
-                    viewHolder7.tv_datetime.setText(deviceDataInfo.getValue());
-                    listdata.put(position,new PatrolInfo(id,deviceDataInfo.getValue()));
-                }
                 break;
             default:
                 break;

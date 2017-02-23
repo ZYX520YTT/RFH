@@ -67,8 +67,11 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
     private List<TaskDetailInfo> taskDetailInfoList;
     private long taskId;
     private String status;
+    private int position;
 
     private String needRemark;
+    private String taskneedRemark;
+
 
 
     @Override
@@ -88,6 +91,10 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         iv_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("position",position);
+                intent.putExtra("status",status);
+                setResult(Activity.RESULT_OK,intent);
                 finish();
                 overridePendingTransition(R.anim.out_right_in, R.anim.out_left_out);
             }
@@ -95,6 +102,10 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         tv_return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("position",position);
+                intent.putExtra("status",status);
+                setResult(Activity.RESULT_OK,intent);
                 finish();
                 overridePendingTransition(R.anim.out_right_in, R.anim.out_left_out);
             }
@@ -104,6 +115,7 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
         final Intent intent = getIntent();
         taskId = intent.getLongExtra("taskId", 0);
         status = intent.getStringExtra("status");
+        position=intent.getIntExtra("position",0);
         getTaskInfo(taskId);
 
 
@@ -185,6 +197,9 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
     }
 
     private void getTaskInfo(long taskId) {
+        if(taskDetailInfoList!=null){
+            taskDetailInfoList.clear();
+        }
         RequestParams params = new RequestParams();
         params.put("taskId", taskId);
         HttpUtils.get(context, Url.task_detail, params, taskdetail_handler);
@@ -203,7 +218,7 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
                     String taskname = null;
                     String tasktype = null;
                     Integer tasktimeLimit = 0;
-                    String taskneedRemark = null;
+                    taskneedRemark = null;
                     String taskapartmentName = null;
                     String taskstatus = null;
                     long taskexecuteTime = 0;
@@ -287,6 +302,12 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
                             taskremarks = jsonObject1.getString("remarks");
                         } catch (Exception e) {
                             e.printStackTrace();
+                        }
+
+                        if(taskneedRemark.equals("0")){
+                            btn_postremark.setVisibility(View.GONE);
+                        }else{
+                            btn_postremark.setVisibility(View.VISIBLE);
                         }
 
                         JSONArray jsonArray = jsonObject.getJSONArray("deviceList");
@@ -484,10 +505,22 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
     //直接点击返回按钮
     @Override
     public void onBackPressed() {
+        Intent intent=new Intent();
+        intent.putExtra("position",position);
+        intent.putExtra("status",status);
+        setResult(Activity.RESULT_OK,intent);
         finish();
         overridePendingTransition(R.anim.out_up_in, R.anim.out_down_out);
     }
 
+    //重新加载数据
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getTaskInfo(taskId);
+    }
 
     @Override
     public void onStart() {

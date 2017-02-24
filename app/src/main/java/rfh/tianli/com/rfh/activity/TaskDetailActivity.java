@@ -143,7 +143,12 @@ public class TaskDetailActivity extends Activity implements EasyPermissions.Perm
             @Override
             public void onClick(View v) {
                 if (status.equals("3")) {
-                    Toast.makeText(context, "任务已完成", Toast.LENGTH_SHORT).show();
+                    //跳到扫码界面
+                    Intent intent1 = new Intent(TaskDetailActivity.this, ScanActivity.class);
+                    intent1.putExtra("needRemark", needRemark);
+                    intent1.putExtra("taskId", taskId);
+                    startActivity(intent1);
+                    overridePendingTransition(R.anim.in_left_in, R.anim.in_right_out);
                 } else if (status.equals("2")) {
                     //跳到扫码界面
                     Intent intent1 = new Intent(TaskDetailActivity.this, ScanActivity.class);

@@ -14,16 +14,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
-            android:text="电压"
             android:textColor="@color/forget_hint"
+            android:text="电压"
             android:textSize="@dimen/forget_hint" />
 
         <TextView
             android:id="@+id/tv_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="(ia)"
             android:layout_toRightOf="@id/tv_name"
-            android:text="(U):"
             android:textColor="@color/forget_hint"
             android:textSize="@dimen/forget_hint" />
 
@@ -35,7 +35,7 @@
             android:layout_alignParentRight="true"
             android:paddingLeft="5dp"
             android:paddingRight="15dp"
-            android:text="V"
+            android:text="(A)"
             android:textColor="@color/forget_hint"
             android:textSize="@dimen/forget_hint" />
 
@@ -47,7 +47,7 @@
             android:layout_toRightOf="@id/tv_code"
             android:background="@null"
             android:digits="0123456789."
-            android:gravity="center"
+            android:gravity="right"
             android:inputType="number"
             android:paddingLeft="5dp"
             android:singleLine="true"

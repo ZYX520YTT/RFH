@@ -122,18 +122,21 @@ public class PersonInfoActivity extends Activity {
     //设置信息
     private void SetInfo(PersonInfo personInfo){
         if(!TextUtils.isEmpty(personInfo.getProprietorInforealName())){
+            rl_1.setVisibility(View.VISIBLE);
             tv_name.setText(personInfo.getProprietorInforealName());
         }else{
             rl_1.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getProprietorInfomobile())){
+            rl_2.setVisibility(View.VISIBLE);
             tv_pphone.setText(personInfo.getProprietorInfomobile());
         }else{
             rl_2.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getProprietorInfosex())){
+            rl_3.setVisibility(View.VISIBLE);
             if((personInfo.getProprietorInfosex()).equals("1")){
                 tv_sex.setText("男");
             }else{
@@ -144,48 +147,56 @@ public class PersonInfoActivity extends Activity {
         }
 
         if(!TextUtils.isEmpty(personInfo.getApartmentname())){
+            rl_4.setVisibility(View.VISIBLE);
             tv_apartname.setText(personInfo.getApartmentname());
         }else{
             rl_4.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getApartmentaddress())){
+            rl_5.setVisibility(View.VISIBLE);
             tv_apartaddress.setText(personInfo.getApartmentaddress());
         }else{
             rl_5.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getUnitname())){
+            rl_6.setVisibility(View.VISIBLE);
             tv_unitname.setText(personInfo.getUnitname());
         }else{
             rl_6.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getRoomNumber())){
+            rl_7.setVisibility(View.VISIBLE);
             tv_roomNumber.setText(personInfo.getRoomNumber());
         }else{
             rl_7.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getEmployeeInforealName())){
+            rl_8.setVisibility(View.VISIBLE);
             tv_ename.setText(personInfo.getEmployeeInforealName());
         }else{
             rl_8.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getEmployeeInfomobile())){
+            rl_9.setVisibility(View.VISIBLE);
             tv_ephone.setText(personInfo.getEmployeeInfomobile());
         }else{
             rl_9.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getOrganizationname())){
+            rl_10.setVisibility(View.VISIBLE);
             tv_organization.setText(personInfo.getOrganizationname());
         }else{
             rl_10.setVisibility(View.GONE);
         }
 
         if(!TextUtils.isEmpty(personInfo.getRoleListname())){
+            rl_11.setVisibility(View.VISIBLE);
             tv_roleList.setText(personInfo.getRoleListname());
         }else{
             rl_11.setVisibility(View.GONE);

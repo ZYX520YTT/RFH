@@ -83,12 +83,17 @@ public class DeviceInfoActivity extends Activity {
     private ShowListView ls_show;
     @ViewInject(R.id.btn_post)
     private Button btn_post;
+    @ViewInject(R.id.tv_check)
+    private TextView tv_check;
+    @ViewInject(R.id.tv_shuxin)
+    private TextView tv_shuxin;
 
     private String author;
     private String project;
     private String code;
     private long taskId;
     private String deviceId;
+
 
     List<DeviceDataInfo> deviceDataInfoList;
     private DeviceInfoAdapter adapter;
@@ -159,8 +164,16 @@ public class DeviceInfoActivity extends Activity {
         if (deviceInfo == null) {
             rl_3.setVisibility(View.GONE);
             rl_4.setVisibility(View.GONE);
+            btn_post.setVisibility(View.INVISIBLE);
+            tv_check.setVisibility(View.INVISIBLE);
+            tv_shuxin.setVisibility(View.INVISIBLE);
             return;
         }
+
+        btn_post.setVisibility(View.VISIBLE);
+        tv_check.setVisibility(View.VISIBLE);
+        tv_shuxin.setVisibility(View.VISIBLE);
+
         if (!TextUtils.isEmpty(deviceInfo.getDeviceName())) {
             tv_name.setText(deviceInfo.getDeviceName());
         } else {

@@ -31,6 +31,7 @@ import rfh.tianli.com.rfh.adapter.DeviceInfoAdapter;
 import rfh.tianli.com.rfh.domain.DeviceDataInfo;
 import rfh.tianli.com.rfh.domain.DeviceInfo;
 import rfh.tianli.com.rfh.domain.PatrolInfo;
+import rfh.tianli.com.rfh.domain.SaveInfo;
 import rfh.tianli.com.rfh.thread.HttpUtils;
 import rfh.tianli.com.rfh.thread.Url;
 import rfh.tianli.com.rfh.widget.ShowListView;
@@ -125,10 +126,11 @@ public class DeviceInfoActivity extends Activity {
             @Override
             public void onClick(View v) {
                 List<PatrolInfo> patrolInfos = adapter.getData();
-                String url = Url.saveValues + String.format("?taskId=%s&deviceId=%s", taskId, deviceId);
-                String json=new Gson().toJson(patrolInfos);
-                System.out.println(json);
-                HttpUtils.postJson(context, url, new Gson().toJson(patrolInfos), saveValues_handler);
+                SaveInfo saveInfo=new SaveInfo(taskId,patrolInfos,deviceId);
+//                String url = Url.saveValues + String.format("?taskId=%s&deviceId=%s", taskId, deviceId);
+                String json=new Gson().toJson(saveInfo);
+//                System.out.println("结果:"+json);
+                HttpUtils.postJson(context, Url.saveValues, new Gson().toJson(saveInfo), saveValues_handler);
             }
         });
 
@@ -307,6 +309,8 @@ public class DeviceInfoActivity extends Activity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+//                String rst = new String(responseBody);
+//                System.out.println("最终："+rst);
                 Toast.makeText(context, "网络连接错误，请检查网络设置后重试。", Toast.LENGTH_SHORT).show();
             }
         };

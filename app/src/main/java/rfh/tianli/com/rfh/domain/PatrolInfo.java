@@ -10,7 +10,7 @@ public class PatrolInfo {
     private long id;
     private String value;
 
-    public PatrolInfo(long id,String value) {
+    public PatrolInfo(long id, String value) {
         this.id = id;
         this.value = value;
     }
